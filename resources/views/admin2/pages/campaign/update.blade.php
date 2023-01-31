@@ -162,7 +162,8 @@
                                                 class="fas fa-info-circle"
                                                 title="commission of this client (in %) is %"></i></label>
                                         <input type="number" id="commissionPerc" class="form-control"
-                                            name="commissionPerc" value="{{ old('commissionPerc') }}"
+                                            name="commissionPerc"
+                                            value="{{ old('commissionPerc', $campaign->commissionPerc) }}"
                                             placeholder="Ex: 10">
                                     </div>
                                 </div>
@@ -188,7 +189,7 @@
                                                 class="fas fa-info-circle"
                                                 title="current vat in (%) is {{ $vat['value'] }}%"></i> </label>
                                         <input type="number" id="vatd" class="form-control" name="vatd"
-                                            value="{{ $vat['value'] }}" disabled>
+                                            value="{{ $vat['value'] }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">

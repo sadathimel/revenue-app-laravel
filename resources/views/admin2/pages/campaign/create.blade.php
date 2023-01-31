@@ -164,8 +164,8 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="last-name-column" class="form-label">Client Commission</label>
-                                        <input disabled type="number" id="commission" class="form-control"
-                                            name="commission" value="{{ old('commission') ?? '0' }}">
+                                        <input type="number" id="commission" class="form-control" name="commission"
+                                            value="{{ old('commission') ?? '0' }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -173,8 +173,8 @@
                                         <label for="first-name-column" class="form-label">Net <i
                                                 class="fas fa-info-circle" title="after calculating commission"></i>
                                         </label>
-                                        <input disabled type="number" id="net" class="form-control"
-                                            name="net" value="{{ old('net') }}">
+                                        <input type="number" id="net" class="form-control" name="net"
+                                            value="{{ old('net') }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -191,15 +191,15 @@
                                         <label for="first-name-column" class="form-label">Vat <i
                                                 class="fas fa-info-circle"
                                                 title="current vat in (%) is {{ $vat['value'] }}%"></i> </label>
-                                        <input disabled type="number" id="vat" class="form-control"
-                                            name="vat" value="{{ old('vat') }}">
+                                        <input type="number" id="vat" class="form-control" name="vat"
+                                            value="{{ old('vat') }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mandatory">
                                         <label for="first-name-column" class="form-label">Bill amount <span
                                                 style="color: red;">*</span> </label>
-                                        <input disabled type="number" id="bill_amount" class="form-control"
+                                        <input type="number" id="bill_amount" class="form-control"
                                             placeholder="final bill amount" name="bill_amount"
                                             value="{{ old('bill_amount') }}" required>
                                     </div>

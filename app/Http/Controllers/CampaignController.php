@@ -73,7 +73,7 @@ class CampaignController extends Controller
 //        );
 
 //        $validate =  Validator::make($request->all(),$validatedData)->validate();
-
+        // dd($request->all());
         $request->validate([
             'client_id' => 'required',
             'title' => 'required|max:200',

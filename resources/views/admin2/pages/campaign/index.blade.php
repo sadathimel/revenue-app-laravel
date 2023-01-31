@@ -1,3 +1,6 @@
+@php
+    use Carbon\Carbon;
+@endphp
 @section('customCSS')
     <link rel="stylesheet" href="{{ asset('assets/admin2/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet"
@@ -124,27 +127,10 @@
                                             <th>Year</th>
                                             <th>Period</th>
                                             <th>Campaign</th>
-                                            <th>Description</th>
                                             <th>Estimate No</th>
                                             <th>Bill No</th>
-                                            <th>Bill Submission Date</th>
-                                            {{-- <th>Pending Day</th>
-                                            <th>Maturity Date</th>
-                                            <th>Gross</th>
-                                            <th>Agency Comm</th>
-                                            <th>Net</th>
-                                            <th>Vat</th>
-                                            <th>Bill Amount</th>
-                                            <th>Payment status</th>
-                                            <th>Received Amount</th>
-                                            <th>CHQ Num</th>
-                                            <th>CHQ Rec Date</th>
-                                            <th>Due</th>
-                                            <th>Cheque Amount</th>
-                                            <th>0-59 Days</th>
-                                            <th>60-89 Days</th>
-                                            <th>90-119 Days</th>
-                                            <th>120-500 Days</th> --}}
+                                            <th> Date</th>
+                                            <th> Status</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -156,100 +142,39 @@
                                                 <td>{{ $campaign->year }}</td>
                                                 <td>{{ date('F', mktime(0, 0, 0, $campaign->month, 10)) }}</td>
                                                 <td>{{ $campaign->title }}</td>
-                                                <td>{{ substr($campaign->description, 0, 20) }} ...</td>
                                                 <td>{{ $campaign->estimate_no == '' ? '-' : $campaign->estimate_no }}
                                                 </td>
                                                 <td>{{ $campaign->bill_no == '' ? '-' : $campaign->bill_no }}</td>
                                                 <td>{{ $campaign->bill_submission_date }}</td>
-                                                {{-- <td>{{ $campaign->pending_day }}</td>
-                                                <td>{{ $campaign->maturity_date }}</td>
-                                                <td>{{ $campaign->gross }}</td>
-                                                <td>{{ $campaign->client_commission }}</td>
-                                                <td>{{ $campaign->net }}</td>
-                                                <td>{{ $campaign->vat }}</td>
-                                                <td>{{ $campaign->bill_amount }}</td>
-                                                <td>{{ $campaign->payment_status }}</td>
-                                                <td>{{ $campaign->received_amount == '' ? '-' : $campaign->received_amount }}
-                                                </td>
-                                                <td>{{ $campaign->chq_num == '' ? '-' : $campaign->chq_num }}</td>
-                                                <td>{{ $campaign->chq_rec_date == '' ? '-' : $campaign->chq_rec_date }}
-                                                </td>
-                                                <td>{{ $campaign->due }}</td>
-                                                <td>{{ $campaign->cheque_amount == '' ? '-' : $campaign->cheque_amount }}
-                                                </td>
-                                                <td>{{ $campaign->day_0_to_59 }}</td>
-                                                <td>{{ $campaign->day_60_to_89 }}</td>
-                                                <td>{{ $campaign->day_90_to_119 }}</td>
-                                                <td>{{ $campaign->day_120_to_500 }}</td> --}}
                                                 <td>
-                                                    <div class="buttons btn-group btn-group-toggle">
-                                                        <a href="{{ route('campaign.view', $campaign->id) }}"
-                                                            class="btn icon btn-primary">view </a>
-                                                        <a target="_blank"
-                                                            href="{{ route('campaign.edit', $campaign->uuid) }}"
-                                                            class="btn icon btn-secondary">
-                                                            Edit </a>
-                                                        {{-- <form method="POST"
-                                                            action="{{ route('campaign.trash', $campaign->id) }}">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button class="btn icon btn-danger btn-flat"><i
-                                                                    class="fa fa-trash" aria-hidden="true"></i> Delete
-                                                            </button>
-                                                        </form> --}}
-                                                    </div>
+                                                    @php
+                                                        $start = Carbon::parse($campaign->bill_submission_date);
+                                                        $end = Carbon::parse(date('Y-m-d'));
+                                                        
+                                                        $days = $end->diffInDays($start);
+                                                        
+                                                    @endphp
+                                                    @if ($days < 0 && $days > 60)
+                                                        <span class="badge badge-danger">False</span>
+                                                    @elseif ($days > 60)
+                                                        <span class="badge badge-warning">Matured</span>
+                                                    @else
+                                                        <span class="badge badge-success">Paid</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <a href="{{ route('campaign.view', $campaign->id) }}"
+                                                        class="btn btn-sm btn-primary">view </a>
+                                                    <a href="{{ route('campaign.edit', $campaign->uuid) }}"
+                                                        class="btn btn-sm btn-secondary">
+                                                        Edit </a>
                                                 </td>
                                             </tr>
                                         @endforeach
 
 
                                     </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Filters</th>
-                                            <th>
-                                                {{--                                            <select class="form-control select2" name="client_id" id="client_id" style="width: 100%;" data-column="1" filter-select> --}}
-                                                {{--                                                <option value="">--Client--</option> --}}
-                                                {{--                                                @foreach ($campaigns as $campaign) --}}
-                                                {{--                                                    <option value="{{ $campaign->client_id }}">{{$campaign->client->name}}</option> --}}
-                                                {{--                                                @endforeach --}}
-                                                {{--                                            </select> --}}
-                                            </th>
-                                            <th>
-                                                <select class="form-control select2" name="client_id" id="client_id"
-                                                    style="width: 100%;" data-column="2" filter-select>
-                                                    <option value="">--Year--</option>
-                                                    @foreach ($years as $year)
-                                                        <option value="{{ $year }}">{{ $year }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </th>
-                                            <th>Period</th>
-                                            <th>Campaign</th>
-                                            <th>Description</th>
-                                            <th>Estimate No</th>
-                                            <th>Bill No</th>
-                                            <th>Bill Submission Date</th>
-                                            {{-- <th>Pending Day</th>
-                                            <th>Maturity Date</th>
-                                            <th>Gross</th>
-                                            <th>Agency Comm</th>
-                                            <th>Net</th>
-                                            <th>Vat</th>
-                                            <th>Bill Amount</th>
-                                            <th>Payment status</th>
-                                            <th>Received Amount</th>
-                                            <th>CHQ Num</th>
-                                            <th>CHQ Rec Date</th>
-                                            <th>Due</th>
-                                            <th>Cheque Amount</th>
-                                            <th>0-59 Days</th>
-                                            <th>60-89 Days</th>
-                                            <th>90-119 Days</th>
-                                            <th>120-500 Days</th> --}}
-                                            <th>Actions</th>
-                                        </tr>
-                                    </tfoot>
+
                                 </table>
                             </div>
                             <!-- /.card-body -->
