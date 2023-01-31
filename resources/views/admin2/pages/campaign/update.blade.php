@@ -386,6 +386,9 @@
             $('#received_amount').on('input', function() {
                 calculate();
             });
+            $('#received_amount').on('input', function() {
+                calculate();
+            });
 
 
             function calculate() {

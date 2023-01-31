@@ -157,7 +157,7 @@
                                                 class="fas fa-info-circle"
                                                 title="commission of this client (in %) is %"></i></label>
                                         <input type="number" id="commissionPerc" class="form-control"
-                                            name="commissionPerc" value="{{ old('commissionPerc') }}"
+                                            name="commissionPerc" value="{{ old('commissionPerc') ?? '0' }}"
                                             placeholder="Ex: 10">
                                     </div>
                                 </div>
@@ -165,7 +165,7 @@
                                     <div class="form-group">
                                         <label for="last-name-column" class="form-label">Client Commission</label>
                                         <input disabled type="number" id="commission" class="form-control"
-                                            name="commission" value="{{ old('commission') }}">
+                                            name="commission" value="{{ old('commission') ?? '0' }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">

@@ -123,7 +123,7 @@
                                         <label for="commission" class="form-label">Client Commission</label>
                                         <input type="number" step="any" id="commission" class="form-control"
                                             name="commission" placeholder="Ex: 0 (in %)"
-                                            value="{{ old('commission') ?? '0.00' }}"
+                                            value="{{ old('commission') ?? '0' }}"
                                             @error('commission') is-invalid @enderror">
                                         @error('commission')
                                             <div class="invalid-feedback">{{ $message }}</div>

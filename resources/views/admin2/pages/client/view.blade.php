@@ -207,12 +207,36 @@
 
                                     </tr>
                                     <tr>
-                                        <th>Name</th>
-                                        <td>{{ $client->name }}</td>
-                                        <th>Commission(%)</th>
-                                        <td>{{ $client->commission }}</td>
+                                        <th>Email</th>
+                                        <td>{{ $client->email }}</td>
+                                        <th>Phone</th>
+                                        <td>{{ $client->phone }}</td>
 
                                     </tr>
+                                    <tr>
+                                        <th>Client Address</th>
+                                        <td>{{ $client->address }}</td>
+                                        <th>Note</th>
+                                        <td>{{ $client->note }}</td>
+
+                                    </tr>
+                                    <tr>
+                                        <th>Client Logo</th>
+                                        <td>{{ $client->logo }}</td>
+                                        <th>Vat on</th>
+                                        <td>{{ $client->vat_on_status == 1 ? 'Gross' : 'Net' }}</td>
+                                    </tr>
+                                    <tr>
+                                        @if ($client->vat_on_status == 1)
+                                            <th>Client Commission</th>
+                                            <td>{{ $client->client_commission_status == 1 ? 'Yes' : 'No' }}</td>
+                                            <th>Discount</th>
+                                            <td>{{ $client->discount_status == 2 ? 'Yes' : 'No' }}</td>
+                                        @endif
+
+                                    </tr>
+
+
                                 </thead>
                                 <tbody>
 

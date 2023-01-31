@@ -167,7 +167,7 @@ class CampaignController extends Controller
 
         // $campaign = Campaign::find($uuid);
         $campaign = Campaign::where('uuid', $uuid)->firstOrFail();
-        dd($campaign);
+        // dd($campaign);
 
         $campaign->bill_submission_date = $request->bill_submission_date;
         $campaign->client_id = $request->client_id;
