@@ -99,9 +99,7 @@
 
 
                                 <tr>
-
                                     <th>Bill Submission Date</th>
-
                                     <td>{{ $campaign->bill_submission_date }}</td>
                                     <th>Pending Day</th>
                                     <td>{{ $campaign->pending_day }}</td>
@@ -115,20 +113,28 @@
                                     <td>{{ $campaign->gross }}</td>
                                 </tr>
 
-                                <tr>
 
+                                <tr>
+                                    <th>Agency Commission in %</th>
+                                    <td>{{ $campaign->client_commission_in }} % </td>
                                     <th>Agency Comm</th>
                                     <td>{{ $campaign->client_commission }}</td>
+                                </tr>
+
+
+                                <tr>
                                     <th>Net</th>
                                     <td>{{ $campaign->net }}</td>
+                                    <th>Bill Amount</th>
+                                    <td>{{ $campaign->bill_amount }}</td>
                                 </tr>
 
                                 <tr>
 
+                                    <th>Vat Amount in %</th>
+                                    <td>{{ $campaign->vatd }} % </td>
                                     <th>Vat</th>
                                     <td>{{ $campaign->vat }}</td>
-                                    <th>Bill Amount</th>
-                                    <td>{{ $campaign->bill_amount }}</td>
                                 </tr>
 
                                 <tr>

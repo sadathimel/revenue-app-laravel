@@ -1,3 +1,22 @@
+a {
+    color: #6746aa !important;
+}
 .bg-purple {
-    background-color: #6746aa!important;
+    background-color: #6746aa !important;
+}
+.btn-primary {
+    background-color: #6746aa !important;
+    border-color: #6746aa !important;
+}
+.btn-primary:hover {
+    background-color: #8561ce !important;
+    border-color: #8d67d9 !important;
+}
+a.nav-link {
+    background-color: #fff;
+    color: #8d67d9;
+}
+a.nav-link:hover {
+    background-color: #6746aa !important;
+    color: #fff !important;
 }

@@ -165,7 +165,7 @@
                                     <div class="form-group">
                                         <label for="last-name-column" class="form-label">Client Commission</label>
                                         <input type="number" id="commission" class="form-control" name="commission"
-                                            value="{{ old('commission') ?? '0' }}">
+                                            value="{{ old('commission') ?? '0' }}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -174,7 +174,7 @@
                                                 class="fas fa-info-circle" title="after calculating commission"></i>
                                         </label>
                                         <input type="number" id="net" class="form-control" name="net"
-                                            value="{{ old('net') }}">
+                                            value="{{ old('net') }}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -192,7 +192,7 @@
                                                 class="fas fa-info-circle"
                                                 title="current vat in (%) is {{ $vat['value'] }}%"></i> </label>
                                         <input type="number" id="vat" class="form-control" name="vat"
-                                            value="{{ old('vat') }}">
+                                            value="{{ old('vat') }}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -206,18 +206,19 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mandatory">
+                                        <label for="first-name-column" class="form-label">Due</label>
+                                        <input type="number" id="due" class="form-control" placeholder=""
+                                            name="due" value="{{ old('due') }}" readonly>
+                                    </div>
+                                </div>
+                                {{-- <div class="col-md-6 col-12">
+                                    <div class="form-group mandatory">
                                         <label for="first-name-column" class="form-label">Received amount</label>
                                         <input type="number" id="received_amount" class="form-control"
                                             name="received_amount" value="{{ old('received_amount', 0) }}">
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group mandatory">
-                                        <label for="first-name-column" class="form-label">Due</label>
-                                        <input type="number" id="due" class="form-control" placeholder=""
-                                            name="due" value="{{ old('due') }}">
-                                    </div>
-                                </div>
+                                
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mandatory">
                                         <label for="first-name-column" class="form-label">Cheque Number</label>
@@ -262,13 +263,13 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label>Remark </label>
-                                        {{-- <input type="textarea" class="form-control" id="remark" name="remark" placeholder="Ex: client was bad" value="{{ old('remark') }}"> --}}
+                                        
                                         <textarea class="form-control" name="remark" value="{{ old('remark') }}" rows="1" cols="10"></textarea>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="card-footer text-center mx-auto">
+                                <button type="submit" class="btn btn-primary text-center mx-auto">Submit</button>
                             </div>
                         </form>
                     </div>

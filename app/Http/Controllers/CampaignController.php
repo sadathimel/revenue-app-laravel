@@ -98,9 +98,11 @@ class CampaignController extends Controller
         $campaign->estimate_no = $request->input('estimate_no');
         $campaign->bill_no = $request->input('bill_no');
         $campaign->gross =  $request->input('gross');
+        $campaign->client_commission_in =  $request->input('commissionPerc');
         $campaign->client_commission =  $request->input('commission');
         $campaign->net = $request->input('net');
         $campaign->vat = $request->input('vat');
+        $campaign->vatd = $request->input('vatd');
         $campaign->bill_amount = $request->input('bill_amount');
         $campaign->received_amount = $request->input('received_amount');
         $campaign->due = $request->input('due');

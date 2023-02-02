@@ -3,6 +3,82 @@
     <link rel="stylesheet"
         href="{{ asset('assets/admin2/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin2/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+    <style>
+        .buttons-copy {
+            background: rgb(56, 0, 150);
+            color: white;
+        }
+
+        .buttons-copy:hover {
+            background: #7800D9;
+            color: white;
+        }
+
+        .buttons-csv {
+            background: rgb(56, 0, 150);
+            color: white;
+        }
+
+        .buttons-csv:hover {
+            background: #7800D9;
+            color: white;
+        }
+
+        .buttons-excel {
+            background: rgb(56, 0, 150);
+            color: white;
+        }
+
+        .buttons-excel:hover {
+            background: #7800D9;
+            color: white;
+        }
+
+        .buttons-pdf {
+            background: rgb(56, 0, 150);
+            color: white;
+        }
+
+        .buttons-pdf:hover {
+            background: #7800D9;
+            color: white;
+        }
+
+        .buttons-print {
+            background: rgb(56, 0, 150);
+            color: white;
+        }
+
+        .buttons-print:hover {
+            background: #7800D9;
+            color: white;
+        }
+
+        .buttons-colvis {
+            background: rgb(56, 0, 150);
+            color: white;
+        }
+
+        .buttons-colvis:hover {
+            background: #7800D9;
+            color: white;
+        }
+
+        .page-item.active .page-link {
+            background: rgb(56, 0, 150);
+            background: linear-gradient(90deg, rgba(56, 0, 150, 1) 0%, rgba(86, 0, 181, 1) 35%, rgba(103, 70, 170, 1) 100%);
+            border-color: #6746aa;
+        }
+
+        .dropdown-item.active,
+        .dropdown-item:active {
+            background-color: #6746aa !important;
+        }
+
+        .dropdown-item {
+            color: #6746aa
+        }
+    </style>
 @endsection
 @extends('admin2.layouts.master')
 @section('content')
@@ -37,7 +113,7 @@
                                     <h3 class="card-title">All Clients</h3>
                                 </div>
                                 <div class="p-2">
-                                    <a class="btn btn-block bg-gradient-info" href="{{ route('client.sheet.import') }}"><i
+                                    <a class="btn btn-block bg-purple" href="{{ route('client.sheet.import') }}"><i
                                             class="fas fa-file-excel"></i>CSB
                                         Entry </a>
                                 </div>
@@ -65,10 +141,12 @@
                                                 <td>
                                                     <div class="buttons btn-group btn-group-toggle">
                                                         <a href="{{ route('client.view', $client->uuid) }}"
-                                                            class="btn icon btn-success"><i class="icon-eye-open"></i>
+                                                            class="btn icon btn-success text-light"><i
+                                                                class="icon-eye-open"></i>
                                                             View </a>
                                                         <a target="_blank" href="{{ route('client.edit', $client->uuid) }}"
-                                                            class="btn icon btn-primary"><i class="fas fa-edit"></i> Edit
+                                                            class="btn icon btn-primary text-light"><i
+                                                                class="fas fa-edit"></i> Edit
                                                         </a>
                                                         {{-- <form method="POST" action="{{ route('client.destroy', $client->id) }}">
                                                         @csrf
@@ -116,8 +194,8 @@
     <script src="{{ asset('assets/admin2/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('assets/admin2/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('assets/admin2/plugins/jszip/jszip.min.js') }}"></script>
-    <script src="{{ asset('assets/admin2/plugins/pdfmake/pdfmake.min.js') }}'"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="{{ asset('assets/admin2/plugins/pdfmake/pdfmake.min.js') }}"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script> --}}
     <script src="{{ asset('assets/admin2/plugins/pdfmake/vfs_fonts.js') }}"></script>
     <script src="{{ asset('assets/admin2/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('assets/admin2/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
@@ -130,15 +208,15 @@
                 "autoWidth": false,
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
+            // $('#example2').DataTable({
+            //     "paging": true,
+            //     "lengthChange": false,
+            //     "searching": false,
+            //     "ordering": true,
+            //     "info": true,
+            //     "autoWidth": false,
+            //     "responsive": true,
+            // });
         });
     </script>
 @endsection

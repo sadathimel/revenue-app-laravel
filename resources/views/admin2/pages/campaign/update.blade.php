@@ -171,7 +171,7 @@
                                     <div class="form-group">
                                         <label for="last-name-column" class="form-label">Client Commission</label>
                                         <input type="number" id="commission" class="form-control" name="commission"
-                                            value="{{ old('commission', $campaign->commission) }}">
+                                            value="{{ old('commission', $campaign->client_commission) }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -378,19 +378,9 @@
     <script>
         $(function() {
 
-            $('#gross').on('input', function() {
-                calculate();
-            });
-            $('#commissionPerc').on('input', function() {
-                calculate();
-            });
-            $('#received_amount').on('input', function() {
-                calculate();
-            });
-            $('#received_amount').on('input', function() {
-                calculate();
-            });
-
+            $('#gross').on('input', calculate); /*when change gross input field value will execute calculate function*/
+            // $('#commissionPerc').on('input', calculate);
+            // $('#received_amount').on('input', calculate);
 
             function calculate() {
                 var gross = parseInt($('#gross').val());

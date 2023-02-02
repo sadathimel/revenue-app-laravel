@@ -110,8 +110,9 @@
                                     <div class="buttons btn-group btn-group-toggle">
                                         {{--                                        <a class="btn icon btn-primary" href="{{ route('campaign.data.refresh') }}"><i class="fas fa-sync-alt" aria-hidden="true"></i> Refresh </a> --}}
                                         {{-- <a class="btn icon btn-primary" href="#"><i class="fas fa-sync-alt" aria-hidden="true"></i> Refresh </a> --}}
-                                        <a class="btn icon btn-primary" href="{{ route('billing.sheet.import') }}"><i
-                                                class="fas fa-file-excel"></i> CSB Entry </a>
+                                        <a class="btn icon btn-primary text-light"
+                                            href="{{ route('billing.sheet.import') }}"><i class="fas fa-file-excel"></i> CSB
+                                            Entry </a>
                                     </div>
 
                                 </div>
@@ -119,7 +120,7 @@
                             <!-- /.card-header -->
                             <div class="card-body">
 
-                                <table id="example1" class="table table-bordered table-striped">
+                                <table id="campaignhimel" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -148,25 +149,25 @@
                                                 <td>{{ $campaign->bill_submission_date }}</td>
                                                 <td>
                                                     @php
-                                                        $start = Carbon::parse($campaign->bill_submission_date);
-                                                        $end = Carbon::parse(date('Y-m-d'));
+                                                        $paymentType = strtoupper($campaign->payment_status);
                                                         
-                                                        $days = $end->diffInDays($start);
+                                                        // dd($paymentType);
                                                         
                                                     @endphp
-                                                    @if ($days < 0 && $days > 60)
+                                                    @if ($paymentType === 'FALSE')
                                                         <span class="badge badge-danger">False</span>
-                                                    @elseif ($days > 60)
+                                                    @elseif ($paymentType === 'MATURED')
                                                         <span class="badge badge-warning">Matured</span>
                                                     @else
                                                         <span class="badge badge-success">Paid</span>
                                                     @endif
+
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('campaign.view', $campaign->id) }}"
-                                                        class="btn btn-sm btn-primary">view </a>
+                                                        class="btn btn-sm btn-primary text-light">view </a>
                                                     <a href="{{ route('campaign.edit', $campaign->uuid) }}"
-                                                        class="btn btn-sm btn-secondary">
+                                                        class="btn btn-sm btn-secondary text-light">
                                                         Edit </a>
                                                 </td>
                                             </tr>
@@ -200,33 +201,20 @@
     <script src="{{ asset('assets/admin2/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('assets/admin2/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('assets/admin2/plugins/jszip/jszip.min.js') }}"></script>
-    <script src="{{ asset('assets/admin2/plugins/pdfmake/pdfmake.min.js') }}'"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="{{ asset('assets/admin2/plugins/pdfmake/pdfmake.min.js') }}"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script> --}}
     <script src="{{ asset('assets/admin2/plugins/pdfmake/vfs_fonts.js') }}"></script>
     <script src="{{ asset('assets/admin2/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('assets/admin2/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('assets/admin2/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-    {{--    <script> --}}
-    {{--        $(function () { --}}
-    {{--            $("#example1").DataTable({ --}}
-    {{--                "responsive": true, "lengthChange": false, "autoWidth": false, --}}
-    {{--                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"] --}}
-    {{--            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)'); --}}
-
-    {{--        }); --}}
-    {{--    </script> --}}
-    <script type="text/javascript">
-        $(function() {
-
-            $(document).ready(function() {
-                $("#example1").DataTable({
-
-                    "lengthChange": true,
-                    "autoWidth": true,
-                    "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-                })
-            }).buttons().container().appendTo('#example1_wrapper .col-md-12');
-
+    <script>
+        $(document).ready(function() {
+            $("#campaignhimel").DataTable({
+                "responsive": false,
+                "lengthChange": false,
+                "autoWidth": true,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#campaignhimel_wrapper .col-md-6:eq(0)');
         });
 
         // {{-- var table = $('#example1').DataTable({ --}}
