@@ -59,6 +59,7 @@
                                         <label>Client Name <span style="color: red;">*</span> </label>
                                         <select class="form-control select2" name="client_id" id="client_id"
                                             style="width: 100%;">
+                                            <option value="">Select Client</option>
                                             @foreach ($clients as $client)
                                                 <option value="{{ $client->id }}">{{ $client->name }}</option>
                                             @endforeach
@@ -139,62 +140,178 @@
                                     @endif
                                 </div>
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Gross <span style="color: red;">*</span> </label>
-                                        <input type="number" id="gross" class="form-control" name="gross"
-                                            value="{{ old('gross') }}" required>
-                                        @if ($errors->has('gross'))
-                                            <div class="alert alert-danger">
-                                                {{ $errors->first('gross') }}
+
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-3">
+                                            <label>Gross <span style="color: red;">*</span> </label>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <input type="number" id="gross" class="form-control" name="gross"
+                                                value="{{ old('gross') }}" required>
+                                            @if ($errors->has('gross'))
+                                                <div class="alert alert-danger">
+                                                    {{ $errors->first('gross') }}
+                                                </div>
+                                            @endif
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-12 col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label for="last-name-column" class="form-label">Client Commission in
+                                                        (%)<i class="fas fa-info-circle"
+                                                            title="commission of this client (in %) is %"></i></label>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <input type="number" id="commissionPerc" class="form-control"
+                                                        name="commissionPerc" value="{{ old('commissionPerc') ?? '0' }}"
+                                                        placeholder="Ex: 10">
+                                                </div>
                                             </div>
-                                        @endif
+
+                                        </div>
+
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group row">
+                                                {{-- <div class="col-md-6">
+                                                    <label for="last-name-column" class="form-label">Client
+                                                        Commission</label>
+
+                                                </div> --}}
+                                                <div class="col-md-6">
+
+                                                    <input type="number" id="commission" class="form-control"
+                                                        name="commission" value="{{ old('commission') ?? '0' }}"
+                                                        readonly>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="col-md-12 col-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label for="last-name-column" class="form-label">Discount<i
+                                                            class="fas fa-info-circle"
+                                                            title="commdiscount of this client is"></i></label>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <input type="number" id="commdiscount" class="form-control"
+                                                        name="commdiscount" value="{{ old('commdiscount') ?? '0' }}"
+                                                        placeholder="Ex: 10">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group row">
+                                                {{-- <div class="col-md-6">
+                                                    <label for="last-name-column" class="form-label">Client
+                                                        Commission</label>
+
+                                                </div> --}}
+                                                <div class="col-md-6">
+
+                                                    <input type="number" id="discount" class="form-control"
+                                                        name="discount" value="{{ old('discount') ?? '0' }}" readonly>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-md-12 col-12">
+                                    <div class="form-group mandatory row">
+
+                                        <div class="col-md-3">
+                                            <label for="first-name-column" class="form-label">Net <i
+                                                    class="fas fa-info-circle" title="after calculating commission"></i>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="number" id="net" class="form-control" name="net"
+                                                value="{{ old('net') }}" readonly>
+                                        </div>
+
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="last-name-column" class="form-label">Client Commission in (%)<i
-                                                class="fas fa-info-circle"
-                                                title="commission of this client (in %) is %"></i></label>
-                                        <input type="number" id="commissionPerc" class="form-control"
-                                            name="commissionPerc" value="{{ old('commissionPerc') ?? '0' }}"
-                                            placeholder="Ex: 10">
+
+
+                                <div class="col-md-12 col-12">
+                                    <div class="row">
+                                        <div class=" col-md-6 form-group mandatory">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label for="first-name-column" class="form-label">Vat On <i
+                                                            class="fas fa-info-circle"
+                                                            title="current vat in (%) is {{ $vat['value'] }}%"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <select id="vattype" class="form-control select3" name="vattype"
+                                                        style="width: 100%;" required>
+                                                        <option value="vatval0">Select Vat</option>
+                                                        <option value="vatval1">Gross</option>
+                                                        <option value="vatval2">Net</option>
+                                                        <option value="vatval3">Without Vat</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {{-- <div class="col-md-3 form-group mandatory">
+                                            <div class="row"> --}}
+                                        {{-- <div class="col-md-6">
+                                                    <label for="first-name-column" class="form-label">Vat in % <i
+                                                    class="fas fa-info-circle"
+                                                    title="current vat in (%) is {{ $vat['value'] }}%"></i> </label>
+                                                </div> --}}
+                                        <div class="col-md-3">
+                                            <input type="number" id="vatd" class="form-control" name="vatd"
+                                                value="{{ $vat['value'] }}">
+                                        </div>
+                                        {{-- </div>
+
+                                        </div> --}}
+                                        {{--
+                                        <div class="form-group mandatory col-md-3">
+
+                                            <div class="row"> --}}
+                                        {{-- <div class="col-md-6">
+                                                    <label for="first-name-column" class="form-label">Vat <i
+                                                    class="fas fa-info-circle"
+                                                    title="current vat in (%) is {{ $vat['value'] }}%"></i> </label>
+                                                </div> --}}
+                                        <div class="col-md-3">
+                                            <input type="number" id="vat" class="form-control" name="vat"
+                                                value="{{ old('vat') }}" readonly>
+                                        </div>
+                                        {{-- </div>
+                                        </div> --}}
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="last-name-column" class="form-label">Client Commission</label>
-                                        <input type="number" id="commission" class="form-control" name="commission"
-                                            value="{{ old('commission') ?? '0' }}" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group mandatory">
-                                        <label for="first-name-column" class="form-label">Net <i
-                                                class="fas fa-info-circle" title="after calculating commission"></i>
-                                        </label>
-                                        <input type="number" id="net" class="form-control" name="net"
-                                            value="{{ old('net') }}" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group mandatory">
-                                        <label for="first-name-column" class="form-label">Vat in % <i
-                                                class="fas fa-info-circle"
-                                                title="current vat in (%) is {{ $vat['value'] }}%"></i> </label>
-                                        <input type="number" id="vatd" class="form-control" name="vatd"
-                                            value="{{ $vat['value'] }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group mandatory">
-                                        <label for="first-name-column" class="form-label">Vat <i
-                                                class="fas fa-info-circle"
-                                                title="current vat in (%) is {{ $vat['value'] }}%"></i> </label>
-                                        <input type="number" id="vat" class="form-control" name="vat"
-                                            value="{{ old('vat') }}" readonly>
-                                    </div>
-                                </div>
+
+
+
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mandatory">
                                         <label for="first-name-column" class="form-label">Bill amount <span
@@ -218,7 +335,7 @@
                                             name="received_amount" value="{{ old('received_amount', 0) }}">
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mandatory">
                                         <label for="first-name-column" class="form-label">Cheque Number</label>
@@ -263,7 +380,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label>Remark </label>
-                                        
+
                                         <textarea class="form-control" name="remark" value="{{ old('remark') }}" rows="1" cols="10"></textarea>
                                     </div>
                                 </div> --}}
@@ -382,12 +499,24 @@
             $('#vatd').on('input', function() {
                 calculate();
             });
+            $('#commdiscount').on('input', function() {
+                calculate();
+
+            });
+
+
 
 
             function calculate() {
                 var gross = parseInt($('#gross').val());
                 var commissionPerc = parseInt($('#commissionPerc').val());
                 var perc = "";
+
+                var commdiscount = parseInt($('#commdiscount').val());
+
+                var diss = "";
+
+                // console.log(commdiscount)
 
 
                 if (isNaN(commissionPerc)) {
@@ -396,21 +525,72 @@
 
                 perc = Math.round(((commissionPerc * gross) / 100));
 
+
+                if (isNaN(commdiscount)) {
+                    commdiscount = 0;
+                    // console.log(commdiscount)
+                }
+
+                diss = Math.round(((commdiscount * gross) / 100));
+
+
                 // if(isNaN(gross) || isNaN(commissionPerc)){
                 //     perc=" ";
                 // }else{
                 //     perc = Math.round( ((commissionPerc * gross) / 100));
                 // }
 
-                var net = gross - perc;
+                // Prec and commdiscount calculation
+
+                var net = gross - perc - diss;
+                // console.log(commdiscount, net, perc);
+
+                // var net = gross - perc;
+
+
                 var vatPerc = parseInt($('#vatd').val());
                 var vat = "";
+
+
+                // vat calculation with vat type 
+
+
+
+                var vattype = $("#vattype").val();
+                if (vattype == "vatval1") {
+                    vat = Math.round(((vatPerc * gross) / 100));
+                    console.log(vat);
+                } else if (vattype == "vatval2") {
+                    vat = Math.round(((vatPerc * net) / 100));
+                    console.log(vat);
+                } else if (vattype == "vatval3") {
+                    vat = Math.round(((vatPerc * 0) / 100));
+                    console.log(vat);
+                }
 
                 if (isNaN(vatPerc)) {
                     vatPerc = 0;
                 }
 
-                vat = Math.round(((vatPerc * net) / 100));
+                // commdiscount calculation
+
+                // $("#vattype").change(function() {
+                //     let val = $(this).val();
+                //     if (val == "vatval1") {
+                //          vat = Math.round(((vatPerc * gross) / 100));
+                //         console.log(vat);
+                //     } else if (val == "vatval2") {
+                //          vat = Math.round(((vatPerc * net) / 100));
+                //         console.log(vat);
+                //     } else if (val == "vatval3") {
+                //          vat = Math.round(((vatPerc * 0) / 100));
+                //         console.log(vat);
+                //     }
+
+                // });
+
+                //  vat calculation
+                // vat = Math.round(((vatPerc * net) / 100));
 
 
                 // var bill = parseInt($('#bill_amount').val());
@@ -427,8 +607,6 @@
                 }
 
 
-
-
                 due = bill - receivedamount;
 
 
@@ -438,7 +616,10 @@
                 $('#vat').val(vat);
                 $('#bill_amount').val(bill);
                 $('#due').val(due);
+                $('#discount').val(diss);
+
             }
+
 
         });
     </script>

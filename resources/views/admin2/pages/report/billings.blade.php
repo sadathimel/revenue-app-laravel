@@ -662,7 +662,8 @@
                     do {
                         i++
                     } while (i == -1 && (this.selectAllOption.isDisabled() || this.selectAllOption
-                    .isHidden()) || i >= 0 && i < this.options.length && (this.options[i].isDisabled() || this
+                            .isHidden()) || i >= 0 && i < this.options.length && (this.options[i]
+                        .isDisabled() || this
                             .options[i].isHidden()));
                     this.itemFocus = i > this.options.length - 1 ? this.itemFocus : i
                 };
@@ -672,7 +673,8 @@
                     do {
                         i--
                     } while (i == -1 && (this.selectAllOption.isDisabled() || this.selectAllOption
-                    .isHidden()) || i >= 0 && (this.options[i].isDisabled() || this.options[i].isHidden()) &&
+                            .isHidden()) || i >= 0 && (this.options[i].isDisabled() || this.options[i]
+                        .isHidden()) &&
                         i > -2);
                     this.itemFocus = i
                 };
@@ -891,7 +893,7 @@
                 };
                 FilterMultiSelect.prototype.dispatchSelectedEvent = function(option) {
                     this.dispatchEvent(FilterMultiSelect.EventType.SELECTED, option.getValue(), option
-                    .getLabel())
+                        .getLabel())
                 };
                 FilterMultiSelect.prototype.dispatchDeselectedEvent = function(option) {
                     this.dispatchEvent(FilterMultiSelect.EventType.DESELECTED, option.getValue(), option
