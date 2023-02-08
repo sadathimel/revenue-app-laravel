@@ -266,12 +266,12 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <select id="vattype" class="form-control select3" name="vattype"
+                                                    <select id="vat_type" class="form-control select3" name="vat_type"
                                                         style="width: 100%;" required>
-                                                        <option value="vatval0">Select Vat</option>
-                                                        <option value="vatval1">Gross</option>
-                                                        <option value="vatval2">Net</option>
-                                                        <option value="vatval3">Without Vat</option>
+                                                        <option value="">Select Vat</option>
+                                                        <option value="1">Gross</option>
+                                                        <option value="2">Net</option>
+                                                        <option value="3">Without Vat</option>
 
                                                     </select>
                                                 </div>
@@ -556,14 +556,14 @@
 
 
 
-                var vattype = $("#vattype").val();
-                if (vattype == "vatval1") {
+                var vattype = $("#vat_type").val();
+                if (vattype == "1") {
                     vat = Math.round(((vatPerc * gross) / 100));
                     console.log(vat);
-                } else if (vattype == "vatval2") {
+                } else if (vattype == "2") {
                     vat = Math.round(((vatPerc * net) / 100));
                     console.log(vat);
-                } else if (vattype == "vatval3") {
+                } else if (vattype == "3") {
                     vat = Math.round(((vatPerc * 0) / 100));
                     console.log(vat);
                 }

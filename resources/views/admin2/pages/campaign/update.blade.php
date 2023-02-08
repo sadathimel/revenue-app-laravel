@@ -163,7 +163,7 @@
                                                 title="commission of this client (in %) is %"></i></label>
                                         <input type="number" id="commissionPerc" class="form-control"
                                             name="commissionPerc"
-                                            value="{{ old('commissionPerc', $campaign->commissionPerc) }}"
+                                            value="{{ old('commissionPerc', $campaign->client_commission_in) }}"
                                             placeholder="Ex: 10">
                                     </div>
                                 </div>
@@ -174,6 +174,50 @@
                                             value="{{ old('commission', $campaign->client_commission) }}">
                                     </div>
                                 </div>
+
+
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column" class="form-label">Vat in (%)<i
+                                                class="fas fa-info-circle"
+                                                title="vatd of this client (in %) is %"></i></label>
+                                        <input type="number" id="vatd" class="form-control" name="vatd"
+                                            value="{{ old('vatd', $campaign->vatd) }}"
+                                            placeholder="Ex: 10">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column" class="form-label">Vat</label>
+                                        <input type="number" id="vat" class="form-control" name="vat"
+                                            value="{{ old('vat', $campaign->vat) }}">
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column" class="form-label">Discount in (%)<i
+                                                class="fas fa-info-circle"
+                                                title="commdiscount of this client (in %) is %"></i></label>
+                                        <input type="number" id="commdiscount" class="form-control" name="commdiscount"
+                                            value="{{ old('commdiscount', $campaign->commdiscount) }}"
+                                            placeholder="Ex: 10">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column" class="form-label">Discount</label>
+                                        <input type="number" id="discount" class="form-control" name="discount"
+                                            value="{{ old('discount', $campaign->discount) }}">
+                                    </div>
+                                </div>
+
+
+
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mandatory">
                                         <label for="first-name-column" class="form-label">Net <i
@@ -183,24 +227,7 @@
                                             value="{{ old('net', $campaign->net) }}">
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group mandatory">
-                                        <label for="first-name-column" class="form-label">Vat in % <i
-                                                class="fas fa-info-circle"
-                                                title="current vat in (%) is {{ $vat['value'] }}%"></i> </label>
-                                        <input type="number" id="vatd" class="form-control" name="vatd"
-                                            value="{{ $vat['value'] }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group mandatory">
-                                        <label for="first-name-column" class="form-label">Vat <i
-                                                class="fas fa-info-circle"
-                                                title="current vat in (%) is {{ $vat['value'] }}%"></i> </label>
-                                        <input type="number" id="vat" class="form-control" name="vat"
-                                            value="{{ old('vat', $campaign->vat) }}">
-                                    </div>
-                                </div>
+
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mandatory">
                                         <label for="first-name-column" class="form-label">Bill amount <span
@@ -378,7 +405,8 @@
     <script>
         $(function() {
 
-            $('#gross').on('input', calculate); /*when change gross input field value will execute calculate function*/
+            $('#gross').on('input',
+                calculate); /*when change gross input field value will execute calculate function*/
             // $('#commissionPerc').on('input', calculate);
             // $('#received_amount').on('input', calculate);
 

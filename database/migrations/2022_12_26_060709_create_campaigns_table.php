@@ -30,6 +30,10 @@ return new class extends Migration
             $table->bigInteger('gross')->unsigned()->nullable()->comment('basic amount');
             $table->bigInteger('client_commission_in')->unsigned()->default(0);
             $table->bigInteger('client_commission')->unsigned()->default(0);
+
+            $table->bigInteger('commdiscount')->unsigned()->default(0);
+            $table->bigInteger('discount')->unsigned()->default(0);
+
             $table->bigInteger('net')->unsigned()->nullable()->comment('after calculating commission');
             $table->bigInteger('vat')->unsigned()->nullable()->comment('after calculating vat(%)');
             $table->bigInteger('vatd')->unsigned()->nullable()->comment('after calculating vat(%)');
@@ -45,6 +49,8 @@ return new class extends Migration
             $table->integer('day_60_to_89')->unsigned()->nullable()->comment("60 to 89 days after matured");
             $table->integer('day_90_to_119')->unsigned()->nullable()->comment("90 to 119 days after matured");
             $table->integer('day_120_to_500')->unsigned()->nullable()->comment("120 to 500 days after matured");
+            $table->tinyInteger('vat_type')->comment('1=Gross, 2=Net, 3=Without  Vat')->default(1);
+            
             $table->text('remark')->nullable();
             $table->integer('created_by')->references('id')->on('users');
             $table->integer('updated_by')->references('id')->on('users');

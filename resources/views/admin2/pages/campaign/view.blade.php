@@ -120,7 +120,13 @@
                                     <th>Agency Comm</th>
                                     <td>{{ $campaign->client_commission }}</td>
                                 </tr>
+                                <tr>
 
+                                    <th>Vat Amount in %</th>
+                                    <td>{{ $campaign->vatd }} % </td>
+                                    <th>Vat</th>
+                                    <td>{{ $campaign->vat }}</td>
+                                </tr>
 
                                 <tr>
                                     <th>Net</th>
@@ -129,13 +135,7 @@
                                     <td>{{ $campaign->bill_amount }}</td>
                                 </tr>
 
-                                <tr>
 
-                                    <th>Vat Amount in %</th>
-                                    <td>{{ $campaign->vatd }} % </td>
-                                    <th>Vat</th>
-                                    <td>{{ $campaign->vat }}</td>
-                                </tr>
 
                                 <tr>
                                     <th>Payment status</th>

@@ -89,6 +89,7 @@ class CampaignController extends Controller
         $campaign = new Campaign;
 
         $campaign->uuid = Str::uuid();
+
         $campaign->bill_submission_date = $request->input('bill_submission_date');
         $campaign->client_id = $request->input('client_id');
         $campaign->title = $request->input('title');
@@ -98,17 +99,25 @@ class CampaignController extends Controller
         $campaign->estimate_no = $request->input('estimate_no');
         $campaign->bill_no = $request->input('bill_no');
         $campaign->gross =  $request->input('gross');
+
+        
         $campaign->client_commission_in =  $request->input('commissionPerc');
         $campaign->client_commission =  $request->input('commission');
         $campaign->net = $request->input('net');
         $campaign->vat = $request->input('vat');
         $campaign->vatd = $request->input('vatd');
+        $campaign->commdiscount = $request->input('commdiscount');
+        $campaign->discount = $request->input('discount');
+
         $campaign->bill_amount = $request->input('bill_amount');
         $campaign->received_amount = $request->input('received_amount');
         $campaign->due = $request->input('due');
         $campaign->chq_num = $request->input('chq_num');
         $campaign->cheque_amount = $request->input('cheque_amount');
         $campaign->chq_rec_date = $request->input('chq_rec_date');
+
+        $campaign->vat_type =  (int) $request->input('vat_type');
+
         if ($request->hasFile('cheque_image')) {
             $imageName = time().'.'.$request->cheque_image->extension();
             $request->cheque_image->move(public_path('pp/images/cheque'), $imageName);
@@ -180,15 +189,25 @@ class CampaignController extends Controller
         $campaign->estimate_no = $request->estimate_no;
         $campaign->bill_no = $request->bill_no;
         $campaign->gross =  $request->gross;
+        $campaign->client_commission_in =  $request->commissionPerc;
         $campaign->client_commission =  $request->commission;
+
         $campaign->net = $request->net;
         $campaign->vat = $request->vat;
+        $campaign->vatd = $request->vatd;
+        $campaign->commdiscount = $request->commdiscount;
+        $campaign->discount = $request->discount;
+
+
+
         $campaign->bill_amount = $request->bill_amount;
         $campaign->received_amount = $request->received_amount;
         $campaign->due = $request->due;
         $campaign->chq_num = $request->chq_num;
         $campaign->cheque_amount = $request->cheque_amount;
         $campaign->chq_rec_date = $request->chq_rec_date;
+        $campaign->vat_type = $request->input('vat_type');
+
         if ($request->hasFile('cheque_image')) {
             $imageName = time().'.'.$request->cheque_image->extension();
             $request->cheque_image->move(public_path('pp/images/cheque'), $imageName);

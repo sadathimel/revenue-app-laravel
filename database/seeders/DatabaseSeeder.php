@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MonthSeeder::class);
         $this->call(VatSeeder::class);
         $this->call(ClientTypeSeeder::class);
-//        $this->call(ClientSeeder::class);
+    //    $this->call(ClientSeeder::class);
 //        $this->call(CampaignSeeder::class);
     }
 }

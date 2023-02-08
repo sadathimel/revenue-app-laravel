@@ -144,7 +144,7 @@
                                                             class="btn icon btn-success text-light"><i
                                                                 class="icon-eye-open"></i>
                                                             View </a>
-                                                        <a target="_blank" href="{{ route('client.edit', $client->uuid) }}"
+                                                        <a href="{{ route('client.edit', $client->uuid) }}"
                                                             class="btn icon btn-primary text-light"><i
                                                                 class="fas fa-edit"></i> Edit
                                                         </a>
