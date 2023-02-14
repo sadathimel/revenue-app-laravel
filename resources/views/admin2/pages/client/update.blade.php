@@ -145,7 +145,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label style="padding-right: 5px;">Vat On: </label>
@@ -186,7 +186,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary mx-auto">Submit</button>
                             </div>

@@ -18,6 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(VatSeeder::class);
         $this->call(ClientTypeSeeder::class);
     //    $this->call(ClientSeeder::class);
-//        $this->call(CampaignSeeder::class);
+    //    $this->call(CampaignSeeder::class);
     }
 }

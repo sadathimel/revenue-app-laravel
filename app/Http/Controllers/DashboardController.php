@@ -14,7 +14,8 @@ class DashboardController extends Controller
         $vat = Vat::where('id', '=', '1')->value('value');
         $total_client = Client::count();
         $total_campaign = Campaign::count();
-        $total_billing = CampaignBilling::count();
+        $total_billing = 10;
+        // $total_billing = CampaignBilling::count();
         //return $vat;
         return view('admin2.pages.home', compact('vat', 'total_client', 'total_campaign', 'total_billing' ));
     }

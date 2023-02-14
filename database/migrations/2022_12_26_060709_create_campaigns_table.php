@@ -19,8 +19,8 @@ return new class extends Migration
             $table->integer('client_id')->references('id')->on('clients');
             $table->string('title', '200');
             $table->text('description')->nullable();
-            $table->year('year');
-            $table->integer('month')->references('id')->on('months');
+            $table->year('year')->nullable();
+            $table->integer('month')->references('id')->on('months')->nullable();
             $table->string('estimate_no', 255)->nullable();
             $table->string('bill_no', 255)->nullable();
             $table->date('bill_submission_date')->nullable();
