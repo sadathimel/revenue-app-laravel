@@ -41,7 +41,7 @@ class BillingSheetImport implements ToModel, WithHeadingRow
         }
         else
         {
-                if ($row['agency_name'] ==  $this->client_name)
+                if ($row['agency_name'] ==  $this->client_name && !Campaign::where('bill_no',trim($row['bill_no']))->exists())
                 {
                     return new Campaign([
                         'uuid' => Str::uuid(),

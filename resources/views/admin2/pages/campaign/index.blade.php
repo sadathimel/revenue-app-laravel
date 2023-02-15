@@ -133,11 +133,14 @@
                                             <th> Date</th>
                                             <th> Status</th>
                                             <th>Actions</th>
+                                            <th>Due</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+
                                         @foreach ($campaigns as $campaign)
                                             <tr>
+
                                                 <td>{{ $campaign->id }}</td>
                                                 <td>{{ $campaign->client->name }}</td>
                                                 <td>{{ $campaign->year }}</td>
@@ -151,15 +154,15 @@
                                                     @php
                                                         $paymentType = strtoupper($campaign->payment_status);
                                                         
-                                                        // dd($paymentType);
+                                                        // dd($campaign->due);
                                                         
                                                     @endphp
-                                                    @if ($paymentType === 'FALSE')
-                                                        <span class="badge badge-danger">False</span>
+                                                    @if ($paymentType === 'PAID')
+                                                        <span class="badge badge-success">Paid</span>
                                                     @elseif ($paymentType === 'MATURED')
                                                         <span class="badge badge-warning">Matured</span>
                                                     @else
-                                                        <span class="badge badge-success">Paid</span>
+                                                        <span class="badge badge-danger">False</span>
                                                     @endif
 
                                                 </td>
@@ -170,6 +173,7 @@
                                                         class="btn btn-sm btn-secondary text-light">
                                                         Edit </a>
                                                 </td>
+                                                <td>{{ $campaign->due }}</td>
                                             </tr>
                                         @endforeach
 
