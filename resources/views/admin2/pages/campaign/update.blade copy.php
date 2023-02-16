@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Bill Update Form</h1>
+                        <h1>Bill Entry Form</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -119,7 +119,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Estimate Id <span style="color: red;">*</span> </label>
+                                        <label>Estimate No <span style="color: red;">*</span> </label>
                                         <input type="text" class="form-control" id="estimate_no" name="estimate_no"
                                             placeholder="Ex: PP/DIGIT/419/Web/01012021"
                                             value="{{ old('estimate_no', $campaign->estimate_no) }}" required>
@@ -132,7 +132,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Bill Id <span style="color: red;">*</span> </label>
+                                        <label>Bill No <span style="color: red;">*</span> </label>
                                         <input type="text" class="form-control" name="bill_no" id="bill_no"
                                             placeholder="Ex: PP/MELON/Web/401/02-21"
                                             value="{{ old('bill_no', $campaign->bill_no) }}" required>
@@ -144,193 +144,89 @@
                                     @endif
                                 </div>
 
-
-                                <div class="col-md-12">
-                                    <div class="form-group row">
-                                        <div class="col-md-3">
-                                            <label>Gross <span style="color: red;">*</span> </label>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <input type="number" id="gross" class="form-control" name="gross"
-                                                value="{{ old('gross', $campaign->gross) }}" required>
-                                            @if ($errors->has('gross'))
-                                                <div class="alert alert-danger">
-                                                    {{ $errors->first('gross') }}
-                                                </div>
-                                            @endif
-                                        </div>
-
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Gross <span style="color: red;">*</span> </label>
+                                        <input type="number" id="gross" class="form-control" name="gross"
+                                            value="{{ old('gross', $campaign->gross) }}" required>
+                                        @if ($errors->has('gross'))
+                                            <div class="alert alert-danger">
+                                                {{ $errors->first('gross') }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column" class="form-label">Client Commission in (%)<i
+                                                class="fas fa-info-circle"
+                                                title="commission of this client (in %) is %"></i></label>
+                                        <input type="number" id="commissionPerc" class="form-control"
+                                            name="commissionPerc"
+                                            value="{{ old('commissionPerc', $campaign->client_commission_in) }}"
+                                            placeholder="Ex: 10">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column" class="form-label">Client Commission</label>
+                                        <input type="number" id="commission" class="form-control" name="commission"
+                                            value="{{ old('commission', $campaign->client_commission) }}">
                                     </div>
                                 </div>
 
 
-                                <div class="col-md-12 col-12">
-                                    <div class="form-group row">
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label for="last-name-column" class="form-label">Client Commission in
-                                                        (%)<i class="fas fa-info-circle"
-                                                            title="commission of this client (in %) is %"></i></label>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <input type="number" id="commissionPerc" class="form-control"
-                                                        name="commissionPerc"
-                                                        value="{{ old('commissionPerc', $campaign->client_commission_in) }}"
-                                                        placeholder="Ex: 10">
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group row">
-                                                {{-- <div class="col-md-6">
-                                                    <label for="last-name-column" class="form-label">Client
-                                                        Commission</label>
-
-                                                </div> --}}
-                                                <div class="col-md-6">
-
-                                                    <input type="number" id="commission" class="form-control"
-                                                        name="commission"
-                                                        value="{{ old('commission', $campaign->client_commission) }}"
-                                                        readonly>
-                                                </div>
-                                            </div>
-                                        </div>
-
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column" class="form-label">Vat in (%)<i
+                                                class="fas fa-info-circle"
+                                                title="vatd of this client (in %) is %"></i></label>
+                                        <input type="number" id="vatd" class="form-control" name="vatd"
+                                            value="{{ old('vatd', $campaign->vatd) }}"
+                                            placeholder="Ex: 10">
                                     </div>
-
-
                                 </div>
 
-
-                                <div class="col-md-12 col-12">
-                                    <div class="form-group row">
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label for="last-name-column" class="form-label">Discount<i
-                                                            class="fas fa-info-circle"
-                                                            title="commdiscount of this client is"></i></label>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <input type="number" id="commdiscount" class="form-control"
-                                                        name="commdiscount"
-                                                        value="{{ old('commdiscount', $campaign->commdiscount) }}"
-                                                        placeholder="Ex: 10">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group row">
-                                                {{-- <div class="col-md-6">
-                                                    <label for="last-name-column" class="form-label">Client
-                                                        Commission</label>
-
-                                                </div> --}}
-                                                <div class="col-md-6">
-
-                                                    <input type="number" id="discount" class="form-control"
-                                                        name="discount"
-                                                        value="{{ old('discount', $campaign->discount) }}" readonly>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-
-                                <div class="col-md-12 col-12">
-                                    <div class="form-group mandatory row">
-
-                                        <div class="col-md-3">
-                                            <label for="first-name-column" class="form-label">Net <i
-                                                    class="fas fa-info-circle" title="after calculating commission"></i>
-                                            </label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <input type="number" id="net" class="form-control" name="net"
-                                                value="{{ old('net', $campaign->net) }}" readonly>
-                                        </div>
-
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column" class="form-label">Vat</label>
+                                        <input type="number" id="vat" class="form-control" name="vat"
+                                            value="{{ old('vat', $campaign->vat) }}">
                                     </div>
                                 </div>
 
 
-                                <div class="col-md-12 col-12">
-                                    <div class="row">
-                                        <div class=" col-md-6 form-group mandatory">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label for="first-name-column" class="form-label">Vat On <i
-                                                            class="fas fa-info-circle"
-                                                            title="current vat in (%) is {{ $vat['value'] }}%"></i>
-                                                    </label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <select id="vat_type" class="form-control select3" name="vat_type"
-                                                        style="width: 100%;" required>
 
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column" class="form-label">Discount in (%)<i
+                                                class="fas fa-info-circle"
+                                                title="commdiscount of this client (in %) is %"></i></label>
+                                        <input type="number" id="commdiscount" class="form-control" name="commdiscount"
+                                            value="{{ old('commdiscount', $campaign->commdiscount) }}"
+                                            placeholder="Ex: 10">
+                                    </div>
+                                </div>
 
-
-
-
-                                                        <option value="{{ $campaign->vat_type }}"
-                                                            {{ $campaign->vat_type === 1 ? 'selected' : '' }}>
-                                                            Gross</option>
-                                                        <option value="{{ $campaign->vat_type }}"
-                                                            {{ $campaign->vat_type === 2 ? 'selected' : '' }}>
-                                                            Net</option>
-                                                        <option value="{{ $campaign->vat_type }}"
-                                                            {{ $campaign->vat_type === 3 ? 'selected' : '' }}>
-                                                            Without Vat</option>
-
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {{-- <div class="col-md-3 form-group mandatory">
-                                            <div class="row"> --}}
-                                        {{-- <div class="col-md-6">
-                                                    <label for="first-name-column" class="form-label">Vat in % <i
-                                                    class="fas fa-info-circle"
-                                                    title="current vat in (%) is {{ $vat['value'] }}%"></i> </label>
-                                                </div> --}}
-                                        <div class="col-md-3">
-                                            <input type="number" id="vatd" class="form-control" name="vatd"
-                                                value="{{ old('vatd', $campaign->vatd) }}">
-                                        </div>
-                                        {{-- </div>
-
-                                        </div> --}}
-                                        {{--
-                                        <div class="form-group mandatory col-md-3">
-
-                                            <div class="row"> --}}
-                                        {{-- <div class="col-md-6">
-                                                    <label for="first-name-column" class="form-label">Vat <i
-                                                    class="fas fa-info-circle"
-                                                    title="current vat in (%) is {{ $vat['value'] }}%"></i> </label>
-                                                </div> --}}
-                                        <div class="col-md-3">
-                                            <input type="number" id="vat" class="form-control" name="vat"
-                                                value="{{ old('vat', $campaign->vat) }}" readonly>
-
-                                            {{-- {{ dd($campaign->vat) }} --}}
-                                        </div>
-                                        {{-- </div>
-                                        </div> --}}
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column" class="form-label">Discount</label>
+                                        <input type="number" id="discount" class="form-control" name="discount"
+                                            value="{{ old('discount', $campaign->discount) }}">
                                     </div>
                                 </div>
 
 
+
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group mandatory">
+                                        <label for="first-name-column" class="form-label">Net <i
+                                                class="fas fa-info-circle" title="after calculating commission"></i>
+                                        </label>
+                                        <input type="number" id="net" class="form-control" name="net"
+                                            value="{{ old('net', $campaign->net) }}">
+                                    </div>
+                                </div>
 
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mandatory">
@@ -343,20 +239,19 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mandatory">
-                                        <label for="first-name-column" class="form-label">Due</label>
-                                        <input type="number" id="due" class="form-control" placeholder=""
-                                            name="due" value="{{ old('due', $campaign->due) }}" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group mandatory">
                                         <label for="first-name-column" class="form-label">Received amount</label>
                                         <input type="number" id="received_amount" class="form-control"
                                             name="received_amount"
                                             value="{{ old('received_amount', $campaign->received_amount) }}">
                                     </div>
                                 </div>
-
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group mandatory">
+                                        <label for="first-name-column" class="form-label">Due</label>
+                                        <input type="number" id="due" class="form-control" placeholder=""
+                                            name="due" value="{{ old('due', $campaign->due) }}">
+                                    </div>
+                                </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mandatory">
                                         <label for="first-name-column" class="form-label">Cheque Number</label>
@@ -374,7 +269,7 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label>Cheque Received Date:</label>
+                                        <label>Amount Received Date:</label>
                                         <div class="input-group date">
 
                                             <input type="date" id="first-name-column" class="form-control"
@@ -400,16 +295,16 @@
                                     @endif
                                 </div>
 
-                                {{-- <div class="col-md-6 col-12">
+                                <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label>Remark </label>
-
-                                        <textarea class="form-control" name="remark" value="{{ old('remark') }}" rows="1" cols="10"></textarea>
+                                        <textarea class="form-control" name="remark" value="{{ old('remark', $campaign->remark) }}" rows="1"
+                                            cols="10"></textarea>
                                     </div>
-                                </div> --}}
+                                </div>
                             </div>
-                            <div class="card-footer text-center mx-auto">
-                                <button type="submit" class="btn btn-primary text-center mx-auto">Submit</button>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary mx-auto">Submit</button>
                             </div>
                         </form>
                     </div>
@@ -510,36 +405,15 @@
     <script>
         $(function() {
 
-            $('#gross').on('input', function() {
-                calculate();
-            });
-            $('#commissionPerc').on('input', function() {
-                calculate();
-            });
-            $('#received_amount').on('input', function() {
-                calculate();
-            });
-            $('#vatd').on('input', function() {
-                calculate();
-            });
-            $('#commdiscount').on('input', function() {
-                calculate();
-
-            });
-
-
-
+            $('#gross').on('input',
+                calculate); /*when change gross input field value will execute calculate function*/
+            // $('#commissionPerc').on('input', calculate);
+            // $('#received_amount').on('input', calculate);
 
             function calculate() {
                 var gross = parseInt($('#gross').val());
                 var commissionPerc = parseInt($('#commissionPerc').val());
                 var perc = "";
-
-                var commdiscount = parseInt($('#commdiscount').val());
-
-                var diss = "";
-
-                // console.log(commdiscount)
 
 
                 if (isNaN(commissionPerc)) {
@@ -548,79 +422,28 @@
 
                 perc = Math.round(((commissionPerc * gross) / 100));
 
-
-                if (isNaN(commdiscount)) {
-                    commdiscount = 0;
-                    // console.log(commdiscount)
-                }
-
-                diss = Math.round(((commdiscount * gross) / 100));
-
-
                 // if(isNaN(gross) || isNaN(commissionPerc)){
                 //     perc=" ";
                 // }else{
                 //     perc = Math.round( ((commissionPerc * gross) / 100));
                 // }
 
-                // Prec and commdiscount calculation
-
-                var net = gross - perc - diss;
-                // console.log(commdiscount, net, perc);
-
-                // var net = gross - perc;
-
-
+                var net = gross - perc;
                 var vatPerc = parseInt($('#vatd').val());
                 var vat = "";
-
-
-                // vat calculation with vat type 
-
-
-
-                var vattype = $("#vat_type").val();
-                if (vattype == "1") {
-                    vat = Math.round(((vatPerc * gross) / 100));
-                    console.log(vat);
-                } else if (vattype == "2") {
-                    vat = Math.round(((vatPerc * net) / 100));
-                    console.log(vat);
-                } else if (vattype == "3") {
-                    vat = Math.round(((vatPerc * 0) / 100));
-                    console.log(vat);
-                }
 
                 if (isNaN(vatPerc)) {
                     vatPerc = 0;
                 }
 
-                // commdiscount calculation
-
-                // $("#vattype").change(function() {
-                //     let val = $(this).val();
-                //     if (val == "vatval1") {
-                //          vat = Math.round(((vatPerc * gross) / 100));
-                //         console.log(vat);
-                //     } else if (val == "vatval2") {
-                //          vat = Math.round(((vatPerc * net) / 100));
-                //         console.log(vat);
-                //     } else if (val == "vatval3") {
-                //          vat = Math.round(((vatPerc * 0) / 100));
-                //         console.log(vat);
-                //     }
-
-                // });
-
-                //  vat calculation
-                // vat = Math.round(((vatPerc * net) / 100));
+                vat = Math.round(((vatPerc * net) / 100));
 
 
                 // var bill = parseInt($('#bill_amount').val());
 
                 var bill = 0;
 
-                bill = net + vat;
+                bill = net - vat;
 
                 var receivedamount = parseInt($('#received_amount').val());
                 var due = 0;
@@ -628,6 +451,8 @@
                 if (isNaN(receivedamount)) {
                     receivedamount = 0;
                 }
+
+
 
 
                 due = bill - receivedamount;
@@ -639,10 +464,7 @@
                 $('#vat').val(vat);
                 $('#bill_amount').val(bill);
                 $('#due').val(due);
-                $('#discount').val(diss);
-
             }
-
 
         });
     </script>

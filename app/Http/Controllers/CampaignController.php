@@ -223,7 +223,7 @@ class CampaignController extends Controller
         if($campaign->save())
         {
             Toastr::success('Campaign updated successfully!', 'Campaign', ["progressBar" => "true"]);
-            return redirect()->route('campaign.create')->with('success', 'Campaign updated successfully');
+            return redirect()->route('campaign.lists')->with('success', 'Campaign updated successfully');
         }else{
             Toastr::error('Something went wrong! Please check and resubmit.', 'Campaign', ["progressBar" => "true"]);
             redirect()->back();
