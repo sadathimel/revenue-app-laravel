@@ -72,6 +72,11 @@
             background: linear-gradient(90deg, rgba(56, 0, 150, 1) 0%, rgba(86, 0, 181, 1) 35%, rgba(103, 70, 170, 1) 100%);
             border-color: #6746aa;
         }
+
+        .greenbdg {
+            background-color: green;
+            color: white;
+        }
     </style>
 @endsection
 @extends('admin2.layouts.master')
@@ -158,15 +163,23 @@
                                                         // dd($campaign->due);
                                                         
                                                     @endphp
+                                                    {{-- {{ var_dump((new DateTime($campaign->bill_submission_date))->diff(new DateTime('now'))->days) }} --}}
                                                     @if ($campaign->due === 0 && $campaign->unbilled_amount === 0)
                                                         <span class="badge badge-success">Paid</span>
                                                     @elseif (
                                                         $campaign->due !== 0 &&
                                                             (new DateTime($campaign->bill_submission_date))->diff(new DateTime('now'))->days > 60 &&
                                                             $campaign->unbilled_amount === 0)
-                                                        <span class="badge badge-warning">Immature </span>
-                                                    @elseif ($campaign->due !== 0 && $campaign->bill_submission_date !== null)
-                                                        <span class="badge badge-warning">Matured </span>
+                                                        <span
+                                                            class="badge badge-warning">{{ ((new DateTime($campaign->bill_submission_date))->diff(new DateTime('now'))->days) }} Matured
+                                                        </span>
+                                                    @elseif (
+                                                        $campaign->due !== 0 &&
+                                                            (new DateTime($campaign->bill_submission_date))->diff(new DateTime('now'))->days < 60 &&
+                                                            $campaign->unbilled_amount === 0)
+                                                        <span
+                                                            class="badge badge-info">{{ ((new DateTime($campaign->bill_submission_date))->diff(new DateTime('now'))->days) }} immature
+                                                        </span>
                                                     @elseif ($campaign->unbilled_amount !== 0)
                                                         <span class="badge badge-warning">False</span>
                                                     @else
