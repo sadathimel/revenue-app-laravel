@@ -150,6 +150,7 @@
                                                 </td>
                                                 <td>{{ $campaign->bill_no == '' ? '-' : $campaign->bill_no }}</td>
                                                 <td>{{ $campaign->bill_submission_date }}</td>
+
                                                 <td>
                                                     @php
                                                         $paymentType = strtoupper($campaign->payment_status);
@@ -157,12 +158,19 @@
                                                         // dd($campaign->due);
                                                         
                                                     @endphp
-                                                    @if ($paymentType === 'PAID')
+                                                    @if ($campaign->due === 0 && $campaign->unbilled_amount === 0)
                                                         <span class="badge badge-success">Paid</span>
-                                                    @elseif ($paymentType === 'MATURED')
-                                                        <span class="badge badge-warning">Matured</span>
+                                                    @elseif (
+                                                        $campaign->due !== 0 &&
+                                                            (new DateTime($campaign->bill_submission_date))->diff(new DateTime('now'))->days > 60 &&
+                                                            $campaign->unbilled_amount === 0)
+                                                        <span class="badge badge-warning">Immature </span>
+                                                    @elseif ($campaign->due !== 0 && $campaign->bill_submission_date !== null)
+                                                        <span class="badge badge-warning">Matured </span>
+                                                    @elseif ($campaign->unbilled_amount !== 0)
+                                                        <span class="badge badge-warning">False</span>
                                                     @else
-                                                        <span class="badge badge-danger">False</span>
+                                                        <span class="badge badge-danger">due</span>
                                                     @endif
 
                                                 </td>
@@ -176,7 +184,6 @@
                                                 <td>{{ $campaign->due }}</td>
                                             </tr>
                                         @endforeach
-
 
                                     </tbody>
 
@@ -196,7 +203,6 @@
     </div>
 @endsection
 
-
 @section('customJs')
     <script src="{{ asset('assets/admin2/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/admin2/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
@@ -214,28 +220,11 @@
     <script>
         $(document).ready(function() {
             $("#campaignhimel").DataTable({
-                "responsive": false,
+                "responsive": true,
                 "lengthChange": false,
                 "autoWidth": true,
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#campaignhimel_wrapper .col-md-6:eq(0)');
         });
-
-        // {{-- var table = $('#example1').DataTable({ --}}
-        // {{--    'processing': true, --}}
-        // {{--    'serverSide': true, --}}
-        // {{--    'ajax': "{{ route('campaign.lists') }}", --}}
-        // {{--    'columns': [ --}}
-        // {{--        {data: 'year'} --}}
-        // {{--    ] --}}
-        // {{-- }); --}}
-
-        // {{-- $('.filter-select').change(function(){ --}}
-        // {{--    table.column( $(this).data('column')) --}}
-        // {{--        .search( $(this).val()) --}}
-        // {{--        .draw(); --}}
-        // {{-- }); 
-
-        // });
     </script>
 @endsection

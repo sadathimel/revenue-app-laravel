@@ -277,17 +277,31 @@
                                                     <select id="vat_type" class="form-control select3" name="vat_type"
                                                         style="width: 100%;" required>
 
+                                                        {{-- 
+                                                        <option value="1"> Gross</option>
+                                                        <option value="2"> Net</option>
+                                                        <option value="3"> Without Vat</option> --}}
 
+                                                        {{-- {{
+                                                                
+                                                            }} --}}
 
-
-
-                                                        <option value="{{ $campaign->vat_type }}"
+                                                        {{-- <option value="1" {{ $campaign->vat_type }}"
                                                             {{ $campaign->vat_type === 1 ? 'selected' : '' }}>
                                                             Gross</option>
-                                                        <option value="{{ $campaign->vat_type }}"
+                                                        <option value="2" {{ $campaign->vat_type }}"
                                                             {{ $campaign->vat_type === 2 ? 'selected' : '' }}>
                                                             Net</option>
-                                                        <option value="{{ $campaign->vat_type }}"
+                                                        <option value="3" {{ $campaign->vat_type }}"
+                                                            {{ $campaign->vat_type === 3 ? 'selected' : '' }}>
+                                                            Without Vat</option> --}}
+                                                        <option value="1" {{ $campaign->vat_type }}"
+                                                            {{ $campaign->vat_type === 1 ? 'selected' : '' }}>
+                                                            Gross</option>
+                                                        <option value="2" {{ $campaign->vat_type }}"
+                                                            {{ $campaign->vat_type === 2 ? 'selected' : '' }}>
+                                                            Net</option>
+                                                        <option value="3" {{ $campaign->vat_type }}"
                                                             {{ $campaign->vat_type === 3 ? 'selected' : '' }}>
                                                             Without Vat</option>
 
@@ -575,18 +589,15 @@
                 var vat = "";
 
 
-                // vat calculation with vat type 
-
-
-
                 var vattype = $("#vat_type").val();
-                if (vattype == "1") {
+
+                if (vattype == 1) {
                     vat = Math.round(((vatPerc * gross) / 100));
                     console.log(vat);
-                } else if (vattype == "2") {
+                } else if (vattype == 2) {
                     vat = Math.round(((vatPerc * net) / 100));
                     console.log(vat);
-                } else if (vattype == "3") {
+                } else if (vattype == 3) {
                     vat = Math.round(((vatPerc * 0) / 100));
                     console.log(vat);
                 }

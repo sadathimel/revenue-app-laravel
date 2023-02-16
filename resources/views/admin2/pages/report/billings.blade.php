@@ -236,7 +236,7 @@
     <script src="{{ asset('assets/admin2/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('assets/admin2/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('assets/admin2/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-    <script src="{{ asset('assets/filter-multi-select-bundle.min.js') }}"></script>
+    {{-- <script src="{{ asset('assets/collects/filter-multi-select-bundle.min.js') }}"></script> --}}
     <script>
         $(function() {
             $("#example1").DataTable({
@@ -263,10 +263,6 @@
     {{--    </script> --}}
 
     <script>
-        const table = document.getElementById("myTable");
-
-        const tr = table.getElementsByTagName("tr");
-
         function SearchData() {
 
             var name = document.getElementById("idName").value.toUpperCase();
@@ -1281,7 +1277,7 @@
         });
     </script>
 
-    <script type="text/javascript">
+    <script>
         $(document).ready(function() {
 
             $('.ckbCheckAll, .checkBoxClass').click(function() {
@@ -1318,7 +1314,6 @@
                 }
             });
 
-
             const aggrFn = {
                 "=": (a, b) => a == b,
                 "<": (a, b) => a < b,
@@ -1348,6 +1343,36 @@
             $(".filter").on("input", ":input", function(ev) {
                 filterColumns($(this).closest("table"));
             });
+
+            var table = $("#example1").DataTable();
+
+            $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
+                var amount = parseInt($('.flex-md-shrink-1').val(), 10);
+                var operator = $('#due').val() == '' ? '=' : $('#due').val();
+                var due = parseFloat(data[14]) || 0; // use data for the age column
+
+                switch (operator) {
+                    case '<':
+                        return (isNaN(due) || due < amount || isNaN(amount)) ? true : false;
+                        break;
+                    case '>':
+                        return (isNaN(due) || due > amount || isNaN(amount)) ? true : false;
+                        break;
+                    case '<=':
+                        return (isNaN(due) || due <= amount || isNaN(amount)) ? true : false;
+                        break;
+                    case '>=':
+                        return (isNaN(due) || due >= amount || isNaN(amount)) ? true : false;
+                        break;
+                    case '=':
+                        return (isNaN(due) || due == amount || isNaN(amount)) ? true : false;
+                        break;
+                    default:
+                        return true;
+                        break;
+                }
+            });
+            $("#due,.flex-md-shrink-1").change(table.draw);
 
         });
     </script>
