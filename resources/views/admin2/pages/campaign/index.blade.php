@@ -171,14 +171,16 @@
                                                             (new DateTime($campaign->bill_submission_date))->diff(new DateTime('now'))->days > 60 &&
                                                             $campaign->unbilled_amount === 0)
                                                         <span
-                                                            class="badge badge-warning">{{ ((new DateTime($campaign->bill_submission_date))->diff(new DateTime('now'))->days) }} Matured
+                                                            class="badge badge-warning">{{ (new DateTime($campaign->bill_submission_date))->diff(new DateTime('now'))->days }}
+                                                            Matured
                                                         </span>
                                                     @elseif (
                                                         $campaign->due !== 0 &&
                                                             (new DateTime($campaign->bill_submission_date))->diff(new DateTime('now'))->days < 60 &&
                                                             $campaign->unbilled_amount === 0)
                                                         <span
-                                                            class="badge badge-info">{{ ((new DateTime($campaign->bill_submission_date))->diff(new DateTime('now'))->days) }} immature
+                                                            class="badge badge-info">{{ (new DateTime($campaign->bill_submission_date))->diff(new DateTime('now'))->days }}
+                                                            immature
                                                         </span>
                                                     @elseif ($campaign->unbilled_amount !== 0)
                                                         <span class="badge badge-warning">False</span>
@@ -234,8 +236,9 @@
         $(document).ready(function() {
             $("#campaignhimel").DataTable({
                 "responsive": true,
-                "lengthChange": false,
-                "autoWidth": true,
+                "lengthChange": true,
+                "autoWidth": false,
+                "autoFill": true,
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#campaignhimel_wrapper .col-md-6:eq(0)');
         });
