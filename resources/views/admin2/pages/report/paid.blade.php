@@ -13,7 +13,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Month wise Bill</h1>
+                        <h1>Month Wise Paid Bill</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -101,14 +101,14 @@
                                             <th>October</th>
                                             <th>November</th>
                                             <th>December</th>
-                                            <th>Total Bill</th>
                                             <th>Total Net</th>
                                             <th>Agency Com</th>
                                             <th>Vat</th>
+                                            <th>Total Bill</th>
                                             <th>Total Received</th>
-                                            <th>Matured</th>
-                                            <th>Unbill Amount</th>
-                                            <th>Due</th>
+                                            {{-- <th>Matured</th> --}}
+                                            {{-- <th>Unbill Amount</th> --}}
+                                            {{-- <th>Due</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -128,51 +128,19 @@
                                                 <td>{{ $row->october == '' ? 0 : $row->october }}</td>
                                                 <td>{{ $row->november == '' ? 0 : $row->november }}</td>
                                                 <td>{{ $row->december == '' ? 0 : $row->december }}</td>
-                                                <td>{{ $row->total_bill_amount == '' ? 0 : $row->total_bill_amount }}
-                                                </td>
                                                 <td>{{ $row->total_net_amount == '' ? 0 : $row->total_net_amount }}</td>
                                                 <td>{{ $row->total_client_commission == '' ? 0 : $row->total_client_commission }}
                                                 </td>
                                                 <td>{{ $row->total_vat_amount == '' ? 0 : $row->total_vat_amount }}</td>
+                                                <td>{{ $row->total_bill_amount == '' ? 0 : $row->total_bill_amount }}</td>
                                                 <td>{{ $row->total_received_amount == '' ? 0 : $row->total_received_amount }}
                                                 </td>
-                                                <td>{{ $row->total_matured_amount == '' ? 0 : $row->total_matured_amount }}
-                                                </td>
-                                                <td>{{ $row->total_unbilled_amount == '' ? 0 : $row->total_unbilled_amount }}
-                                                </td>
-                                                <td>{{ $row->due == '' ? 0 : $row->due }}</td>
+                                                {{-- <td>{{ ($row->total_matured_amount == '') ? 0 : $row->total_matured_amount }}</td>
+                                                <td>{{ ($row->total_unbilled_amount == '') ? 0 : $row->total_unbilled_amount }}</td> --}}
+                                                {{-- <td>{{ $row->paid == '' ? 0 : $row->paid }}</td> --}}
                                             </tr>
                                         @endforeach
                                     </tbody>
-                                    <tfoot>
-
-                                        <tr>
-                                            <td>Client Name</td>
-                                            <td>Year </td>
-                                            <td>January = {{ $results->sum('january') }}</td>
-                                            <td>February = {{ $results->sum('february') }}</td>
-                                            <td>March = {{ $results->sum('march') }}</td>
-                                            <td>April = {{ $results->sum('april') }}</td>
-                                            <td>May = {{ $results->sum('may') }}</td>
-                                            <td>June = {{ $results->sum('jun') }}</td>
-                                            <td>July = {{ $results->sum('july') }}</td>
-                                            <td>August = {{ $results->sum('august') }}</td>
-                                            <td>September = {{ $results->sum('september') }}</td>
-                                            <td>October = {{ $results->sum('october') }}</td>
-                                            <td>November = {{ $results->sum('november') }} </td>
-                                            <td>December = {{ $results->sum('december') }}</td>
-                                            <td>Total Bill = {{ $results->sum('total_bill_amount') }}</td>
-                                            <td>Total Net = {{ $results->sum('total_net_amount') }}</td>
-                                            <td>Agency Com = {{ $results->sum('total_client_commission') }}</td>
-                                            <td>Vat = {{ $results->sum('total_vat_amount') }}</td>
-                                            <td>Total Received = {{ $results->sum('total_received_amount') }}</td>
-                                            <td>Matured = {{ $results->sum('total_matured_amount') }}</td>
-                                            <td>Unbill Amount = {{ $results->sum('total_unbilled_amount') }}</td>
-                                            <td>Due = {{ $results->sum('due') }}</td>
-                                        </tr>
-                                    </tfoot>
-
-
                                 </table>
                             </div>
 
@@ -1163,9 +1131,7 @@
             var table = $('#example1').DataTable({
                 "responsive": true,
                 "lengthChange": true,
-                "autoWidth": true,
-                "processing": true,
-                "progrssive": true,
+                "autoWidth": false,
                 "lengthMenu": [
                     [10, 15, 25, 35, 50, 100, -1],
                     [10, 15, 25, 35, 50, 100, "All"]

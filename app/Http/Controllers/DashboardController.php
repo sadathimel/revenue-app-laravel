@@ -17,6 +17,7 @@ class DashboardController extends Controller
         $total_billing = 10;
         // $total_billing = CampaignBilling::count();
         //return $vat;
-        return view('admin2.pages.home', compact('vat', 'total_client', 'total_campaign', 'total_billing' ));
+        $campaignes = Campaign::all();
+        return view('admin2.pages.home', compact('vat', 'total_client', 'total_campaign', 'total_billing','campaignes' ));
     }
 }

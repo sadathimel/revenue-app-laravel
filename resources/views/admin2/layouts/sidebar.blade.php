@@ -124,15 +124,15 @@
 
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('billing.report.index') }}" class="nav-link">
+                            <a href="{{ route('report.all') }}" class="nav-link">
                                 <i class="fa fa-file" aria-hidden="true"></i>
-                                <p>Billing reports</p>
+                                <p>All Billing</p>
                             </a>
                         </li>
                     </ul>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('billing.report.index') }}" class="nav-link">
+                            <a href="{{ route('report.due') }}" class="nav-link">
                                 <i class="fa fa-file" aria-hidden="true"></i>
                                 <p>Due Bills</p>
                             </a>
@@ -140,7 +140,7 @@
                     </ul>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('billing.report.index') }}" class="nav-link">
+                            <a href="{{ route('report.paid') }}" class="nav-link">
                                 <i class="fa fa-file" aria-hidden="true"></i>
                                 <p>Paid Bills</p>
                             </a>

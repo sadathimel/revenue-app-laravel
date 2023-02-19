@@ -140,7 +140,7 @@
                                 <tr>
                                     <th>Payment status</th>
                                     <td>{{ $campaign->payment_status }}</td>
-                                    <th>Received Amount</th>
+                                    <th>Recevied Amount</th>
                                     <td>{{ $campaign->received_amount == '' ? '-' : $campaign->received_amount }} </td>
                                 </tr>
 

@@ -90,8 +90,11 @@ Route::delete('/trash/delete-all-campaigns', 'CampaignController@removeAllFromTr
 /* ------------------------------------------------
 Report
 ------------------------------------------------- */
-Route::get('/billing-report', 'ReportController@index')->name('billing.report.index');
+Route::get('/billing-report', 'ReportController@index')->name('report.all');
+Route::get('/billing-due', 'ReportController@due')->name('report.due');
+Route::get('/billing-paid', 'ReportController@paid')->name('report.paid');
 Route::get('/get-billings', 'ReportController@getBillingsData')->name('getBillingData');
+
 
 
 

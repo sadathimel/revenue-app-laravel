@@ -364,7 +364,7 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mandatory">
-                                        <label for="first-name-column" class="form-label">Received amount</label>
+                                        <label for="first-name-column" class="form-label">Recevied amount</label>
                                         <input type="number" id="received_amount" class="form-control"
                                             name="received_amount"
                                             value="{{ old('received_amount', $campaign->received_amount) }}">
@@ -388,7 +388,7 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label>Cheque Received Date:</label>
+                                        <label>Cheque Recevied Date:</label>
                                         <div class="input-group date">
 
                                             <input type="date" id="first-name-column" class="form-control"
