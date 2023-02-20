@@ -116,7 +116,7 @@
                                         {{--                                        <a class="btn icon btn-primary" href="{{ route('campaign.data.refresh') }}"><i class="fas fa-sync-alt" aria-hidden="true"></i> Refresh </a> --}}
                                         {{-- <a class="btn icon btn-primary" href="#"><i class="fas fa-sync-alt" aria-hidden="true"></i> Refresh </a> --}}
                                         <a class="btn icon btn-primary text-light"
-                                            href="{{ route('billing.sheet.import') }}"><i class="fas fa-file-excel"></i> CSB
+                                            href="{{ route('billing.sheet.import') }}"><i class="fas fa-file-excel"></i> CSV
                                             Entry </a>
                                     </div>
 

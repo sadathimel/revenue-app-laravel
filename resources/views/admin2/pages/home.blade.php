@@ -59,7 +59,6 @@
                 </div>
                 <!-- /.row -->
 
-                <!-- /.row (main row) -->
             </div><!-- /.container-fluid -->
         </section>
 

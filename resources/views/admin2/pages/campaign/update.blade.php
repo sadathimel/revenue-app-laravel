@@ -102,18 +102,31 @@
                                         <label for="month" class="form-label">Period <span style="color: red;">*</span>
                                         </label>
                                         <select class="form-control select2" name="month" style="width: 100%;" required>
-                                            <option value="1">January</option>
-                                            <option value="2">February</option>
-                                            <option value="3">March</option>
-                                            <option value="4">April</option>
-                                            <option value="5">May</option>
-                                            <option value="6">June</option>
-                                            <option value="7">July</option>
-                                            <option value="8">August</option>
-                                            <option value="9">September</option>
-                                            <option value="10">October</option>
-                                            <option value="11">November</option>
-                                            <option value="12">December</option>
+
+                                            <option value="1" {{ $campaign->month == 1 ? 'selected' : '' }}>January
+                                            </option>
+                                            <option value="2" {{ $campaign->month == 2 ? 'selected' : '' }}>February
+                                            </option>
+                                            <option value="3" {{ $campaign->month == 3 ? 'selected' : '' }}>March
+                                            </option>
+                                            <option value="4" {{ $campaign->month == 4 ? 'selected' : '' }}>April
+                                            </option>
+                                            <option value="5" {{ $campaign->month == 5 ? 'selected' : '' }}>May
+                                            </option>
+                                            <option value="6" {{ $campaign->month == 6 ? 'selected' : '' }}>June
+                                            </option>
+                                            <option value="7" {{ $campaign->month == 7 ? 'selected' : '' }}>July
+                                            </option>
+                                            <option value="8" {{ $campaign->month == 8 ? 'selected' : '' }}>August
+                                            </option>
+                                            <option value="9" {{ $campaign->month == 9 ? 'selected' : '' }}>September
+                                            </option>
+                                            <option value="10" {{ $campaign->month == 10 ? 'selected' : '' }}>October
+                                            </option>
+                                            <option value="11" {{ $campaign->month == 11 ? 'selected' : '' }}>November
+                                            </option>
+                                            <option value="12" {{ $campaign->month == 12 ? 'selected' : '' }}>December
+                                            </option>
                                         </select>
                                     </div>
                                 </div>

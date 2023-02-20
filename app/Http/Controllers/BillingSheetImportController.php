@@ -27,6 +27,7 @@ class BillingSheetImportController extends Controller
         $this->validate($request, [
             'import_file'  => 'required|mimes:xls,xlsx'
         ]);
+        
 
         $client_option = $request->input('client_option');
         $client_name = Client::where('id', $client_option)->first()->name;
