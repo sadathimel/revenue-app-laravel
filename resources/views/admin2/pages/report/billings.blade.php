@@ -154,7 +154,7 @@
                                             <td>March = {{ $results->sum('march') }}</td>
                                             <td>April = {{ $results->sum('april') }}</td>
                                             <td>May = {{ $results->sum('may') }}</td>
-                                            <td>June = {{ $results->sum('jun') }}</td>
+                                            <td>June = {{ $results->sum('june') }}</td>
                                             <td>July = {{ $results->sum('july') }}</td>
                                             <td>August = {{ $results->sum('august') }}</td>
                                             <td>September = {{ $results->sum('september') }}</td>
@@ -1161,7 +1161,7 @@
             }
 
             var table = $('#example1').DataTable({
-                "responsive": true,
+                "responsive": false,
                 "lengthChange": true,
                 "autoWidth": true,
                 "processing": true,
@@ -1249,13 +1249,16 @@
             $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
                 var amount = parseInt($('#amount').val().replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 10);
                 var operator = $('#condition').val() == '' ? '=' : $('#condition').val();
-                var due = parseFloat(data[20]) || 0; // use data for the age column
+                var due = parseFloat(data[21]) || 0; // use data for the due column
 
                 switch (operator) {
+
                     case '<':
                         return (isNaN(due) || due < amount || isNaN(amount)) ? true : false;
+                        console.log(due)
                         break;
                     case '>':
+                        console.log(due)
                         return (isNaN(due) || due > amount || isNaN(amount)) ? true : false;
                         break;
                     case '<=':
