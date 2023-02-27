@@ -71,21 +71,29 @@
                                 <th>Total Received</th>
 
                                 <th>Due</th>
+                                <th>More info</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($cam1 as $row)
                                 {{-- {{ dd($row) }} --}}
                                 <tr>
-                                    <td> {{ $row->year }}</td>
-                                    <td> <a href="{{ route('report.yearmonth') }}"><b>৳</b>
-                                            {{ number_format($row->total_amount) }}</a></td>
-                                    <a href="{{ route('report.yearmonth') }}">
-                                        <td> <b>৳</b> {{ number_format($row->total_received_amount) }}</td>
-                                    </a>
-                                    <a href="{{ route('report.yearmonth') }}">
-                                        <td> <b>৳</b> {{ number_format($row->total_due) }}</td>
-                                    </a>
+                                    <td> <b> {{ $row->year }}</b></td>
+                                    <td> <a href="{{ route('report.yearmonth') }}"><b>৳
+                                                {{ number_format($row->total_amount) }}</a></b></td>
+
+                                    <td> <a href="{{ route('report.yearmonth') }}"> <b>৳
+                                                {{ number_format($row->total_received_amount) }}</b></a></td>
+
+
+                                    <td><a href="{{ route('report.yearmonth') }}"> <b>৳
+                                                {{ number_format($row->total_due) }}</b></a></td>
+
+
+                                    <td>
+                                        <a href="{{ route('report.yearmonth') }}"><button type="button"
+                                                class="btn btn-info text-white"> more info </button></a>
+                                    </td>
 
                                 </tr>
                             @endforeach
