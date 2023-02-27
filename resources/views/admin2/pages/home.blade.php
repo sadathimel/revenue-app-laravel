@@ -78,9 +78,14 @@
                                 {{-- {{ dd($row) }} --}}
                                 <tr>
                                     <td> {{ $row->year }}</td>
-                                    <td> <b>৳</b> {{ number_format($row->total_amount) }}</td>
-                                    <td> <b>৳</b> {{ number_format($row->total_received_amount) }}</td>
-                                    <td> <b>৳</b> {{ number_format($row->total_due) }}</td>
+                                    <td> <a href="{{ route('report.yearmonth') }}"><b>৳</b>
+                                            {{ number_format($row->total_amount) }}</a></td>
+                                    <a href="{{ route('report.yearmonth') }}">
+                                        <td> <b>৳</b> {{ number_format($row->total_received_amount) }}</td>
+                                    </a>
+                                    <a href="{{ route('report.yearmonth') }}">
+                                        <td> <b>৳</b> {{ number_format($row->total_due) }}</td>
+                                    </a>
 
                                 </tr>
                             @endforeach

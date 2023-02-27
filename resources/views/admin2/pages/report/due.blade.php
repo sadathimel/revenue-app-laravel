@@ -122,13 +122,13 @@
                                                 <td>{{ $row->october == '' ? 0 : $row->october }}</td>
                                                 <td>{{ $row->november == '' ? 0 : $row->november }}</td>
                                                 <td>{{ $row->december == '' ? 0 : $row->december }}</td>
+                                                <td>{{ $row->due == '' ? 0 : $row->due }}</td>
                                                 {{-- <td>{{ ($row->total_bill_amount == '') ? 0 : $row->total_bill_amount }}</td> --}}
                                                 {{-- <td>{{ ($row->total_net_amount == '') ? 0 : $row->total_net_amount }}</td> --}}
                                                 {{-- <td>{{ ($row->total_received_amount == '') ? 0 : $row->total_received_amount }}</td> --}}
                                                 {{-- <td>{{ ($row->total_matured_amount == '') ? 0 : $row->total_matured_amount }}</td> --}}
                                                 {{-- <td>{{ ($row->total_unbilled_amount == '') ? 0 : $row->total_unbilled_amount }}</td> --}}
                                                 {{-- <td>{{ ($row->total_client_commission == '') ? 0 : $row->total_client_commission }}</td> --}}
-                                                <td>{{ $row->due == '' ? 0 : $row->due }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

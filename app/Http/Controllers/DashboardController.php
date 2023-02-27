@@ -22,7 +22,7 @@ class DashboardController extends Controller
 
 $cam1 = DB::select("SELECT year , sum(bill_amount) as total_amount, sum(due) as total_due, sum(received_amount) as total_received_amount FROM campaigns GROUP BY year");
 
-        // $cam1 = DB::select("SELECT months.name as mname, sum(campaigns.bill_amount) as total_amount, sum(campaigns.due) as total_due, sum(campaigns.received_amount) as total_received_amount FROM campaigns ,months where campaigns.year=2021 and campaigns.month = months.id GROUP BY months.name ORDER BY campaigns.month");
+ 
 
 
         

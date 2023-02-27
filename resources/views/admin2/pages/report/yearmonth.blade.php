@@ -13,9 +13,9 @@
             <div class="container-fluid">
                 <div class="row mb-2 text-center">
                     <div class="col-sm-12">
-                        <h1>Month wise Bill</h1>
+                        <h1>Year and Month wise <span class="text-red text-bold"></span> Data</h1>
                     </div>
-                   
+
                 </div>
             </div><!-- /.container-fluid -->
         </section>
@@ -32,142 +32,39 @@
                                     <div class="col-2"></div>
                                     <div class="col-10" id="notifications">&nbsp;</div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-5">
-                                        <div class="form-group">
-                                            <label class="form-label" for="client_id">Clients</label>
-                                            <select multiple name="select_client_name" id="select_client_name"
-                                                class="filter-multi-select">
-                                                @foreach ($clients_name as $name)
-                                                    <option value="{{ $name }}">{{ $name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="form-group">
-                                            <label class="form-label" for="year">Year</label>
 
-                                            <select multiple name="select_year" id="select_year"
-                                                class="filter-multi-select">
-                                                @foreach ($years as $year)
-                                                    <option value="{{ $year }}">{{ $year }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-5">
-                                        <div class="form-group">
-                                            <label class="form-label" for="due">Total Due</label>
-                                            <div class="d-flex">
-                                                <select name="due" id="condition" class="form-control flex-fill">
-                                                    <option>Select Condition</option>
-                                                    <option value="=">Equal to (=) </option>
-                                                    <option value="<">Less than (<) </option>
-                                                    <option value=">">Greater than (>) </option>
-                                                    <option value="<=">Less than Equal (<=) </option>
-                                                    <option value=">=">Greater than equal (>=) </option>
-                                                </select>
-                                                <input type="number" id="amount" class="form-control flex-md-shrink-1">
-                                                {{--                                                    <input type="text" class="form-control" id="min" name="min" placeholder="min amount"> --}}
-                                                {{--                                                    <br> --}}
-                                                {{--                                                    <input type="text" class="form-control" id="max" name="max" placeholder="max amount"> --}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Client Name</th>
-                                            <th>Year</th>
-                                            <th>January</th>
-                                            <th>February</th>
-                                            <th>March</th>
-                                            <th>April</th>
-                                            <th>May</th>
-                                            <th>June</th>
-                                            <th>July</th>
-                                            <th>August</th>
-                                            <th>September</th>
-                                            <th>October</th>
-                                            <th>November</th>
-                                            <th>December</th>
-                                            <th>Total Bill</th>
-                                            <th>Total Net</th>
-                                            <th>Agency Com</th>
-                                            <th>Vat</th>
-                                            <th>Total Received</th>
-                                            <th>Matured</th>
-                                            <th>Unbill Amount</th>
-                                            <th>Due</th>
+
+
+                                            <th>year</th>
+                                            <th>month</th>
+                                            <th>total_amount</th>
+                                            <th>total_received_amount</th>
+                                            <th>total_due</th>
+
+
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($results as $row)
+                                        @foreach ($yearmonth as $row)
                                             <tr>
-                                                <td>{{ $row->name }}</td>
-                                                <td>{{ $row->year }}</td>
-                                                <td>{{ $row->january > 0  ? 0 : $row->january }}</td>
-                                                <td>{{ $row->february == '' ? 0 : $row->february }}</td>
-                                                <td>{{ $row->march == '' ? 0 : $row->march }}</td>
-                                                <td>{{ $row->april == '' ? 0 : $row->april }}</td>
-                                                <td>{{ $row->may == '' ? 0 : $row->may }}</td>
-                                                <td>{{ $row->june == '' ? 0 : $row->june }}</td>
-                                                <td>{{ $row->july == '' ? 0 : $row->july }}</td>
-                                                <td>{{ $row->august == '' ? 0 : $row->august }}</td>
-                                                <td>{{ $row->september == '' ? 0 : $row->september }}</td>
-                                                <td>{{ $row->october == '' ? 0 : $row->october }}</td>
-                                                <td>{{ $row->november == '' ? 0 : $row->november }}</td>
-                                                <td>{{ $row->december == '' ? 0 : $row->december }}</td>
-                                                <td>{{ $row->total_bill_amount == '' ? 0 : $row->total_bill_amount }}
-                                                </td>
-                                                <td>{{ $row->total_net_amount == '' ? 0 : $row->total_net_amount }}</td>
-                                                <td>{{ $row->total_client_commission == '' ? 0 : $row->total_client_commission }}
-                                                </td>
-                                                <td>{{ $row->total_vat_amount == '' ? 0 : $row->total_vat_amount }}</td>
+
+                                                <td>{{ $row->camyear == '' ? 0 : $row->camyear }}</td>
+                                                {{-- {{ print_r($row) }} --}}
+                                                <td>{{ $row->mname == '' ? 0 : $row->mname }}</td>
+                                                <td>{{ $row->total_amount == '' ? 0 : $row->total_amount }}</td>
                                                 <td>{{ $row->total_received_amount == '' ? 0 : $row->total_received_amount }}
                                                 </td>
-                                                <td>{{ $row->total_matured_amount == '' ? 0 : $row->total_matured_amount }}
-                                                </td>
-                                                <td>{{ $row->total_unbilled_amount == '' ? 0 : $row->total_unbilled_amount }}
-                                                </td>
-                                                <td>{{ $row->due == '' ? 0 : $row->due }}</td>
+                                                <td>{{ $row->total_due == '' ? 0 : $row->total_due }}</td>
+
+
                                             </tr>
                                         @endforeach
                                     </tbody>
-                                    {{-- <tfoot>
-
-                                        <tr>
-                                            <td>Client Name</td>
-                                            <td>Year </td>
-                                            <td>January = {{ $results->sum('january') }}</td>
-                                            <td>February = {{ $results->sum('february') }}</td>
-                                            <td>March = {{ $results->sum('march') }}</td>
-                                            <td>April = {{ $results->sum('april') }}</td>
-                                            <td>May = {{ $results->sum('may') }}</td>
-                                            <td>June = {{ $results->sum('june') }}</td>
-                                            <td>July = {{ $results->sum('july') }}</td>
-                                            <td>August = {{ $results->sum('august') }}</td>
-                                            <td>September = {{ $results->sum('september') }}</td>
-                                            <td>October = {{ $results->sum('october') }}</td>
-                                            <td>November = {{ $results->sum('november') }} </td>
-                                            <td>December = {{ $results->sum('december') }}</td>
-                                            <td>Total Bill = {{ $results->sum('total_bill_amount') }}</td>
-                                            <td>Total Net = {{ $results->sum('total_net_amount') }}</td>
-                                            <td>Agency Com = {{ $results->sum('total_client_commission') }}</td>
-                                            <td>Vat = {{ $results->sum('total_vat_amount') }}</td>
-                                            <td>Total Received = {{ $results->sum('total_received_amount') }}</td>
-                                            <td>Matured = {{ $results->sum('total_matured_amount') }}</td>
-                                            <td>Unbill Amount = {{ $results->sum('total_unbilled_amount') }}</td>
-                                            <td>Due = {{ $results->sum('due') }}</td>
-                                        </tr>
-                                    </tfoot> --}}
-
-
                                 </table>
                             </div>
 
@@ -1156,11 +1053,9 @@
             }
 
             var table = $('#example1').DataTable({
-                "responsive": false,
+                "responsive": true,
                 "lengthChange": true,
-                "autoWidth": true,
-                "processing": true,
-                "progrssive": true,
+                "autoWidth": false,
                 "lengthMenu": [
                     [10, 15, 25, 35, 50, 100, -1],
                     [10, 15, 25, 35, 50, 100, "All"]
@@ -1244,16 +1139,13 @@
             $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
                 var amount = parseInt($('#amount').val().replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 10);
                 var operator = $('#condition').val() == '' ? '=' : $('#condition').val();
-                var due = parseFloat(data[21]) || 0; // use data for the due column
+                var due = parseFloat(data[14]) || 0; // use data for the age column
 
                 switch (operator) {
-
                     case '<':
                         return (isNaN(due) || due < amount || isNaN(amount)) ? true : false;
-                        console.log(due)
                         break;
                     case '>':
-                        console.log(due)
                         return (isNaN(due) || due > amount || isNaN(amount)) ? true : false;
                         break;
                     case '<=':

@@ -142,7 +142,7 @@
                         <li class="nav-item">
                             <a href="{{ route('report.paid') }}" class="nav-link">
                                 <i class="fa fa-file" aria-hidden="true"></i>
-                                <p>Paid Bills</p>
+                                <p>Received Bills</p>
                             </a>
                         </li>
                     </ul>
