@@ -11,16 +11,11 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>Month Wise Paid Bill</h1>
+                <div class="row mb-2 text-center">
+                    <div class="col-sm-12 ">
+                        <h1>Month Wise <span class="text-primary text-bold">Received</span>  Bill</h1>
                     </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Reports</li>
-                        </ol>
-                    </div>
+
                 </div>
             </div><!-- /.container-fluid -->
         </section>
@@ -64,7 +59,7 @@
 
                                     <div class="col-5">
                                         <div class="form-group">
-                                            <label class="form-label" for="due">Total Due</label>
+                                            <label class="form-label" for="due">Total Received</label>
                                             <div class="d-flex">
                                                 <select name="due" id="condition" class="form-control flex-fill">
                                                     <option>Select Condition</option>
@@ -137,7 +132,7 @@
                                                 </td>
                                                 {{-- <td>{{ ($row->total_matured_amount == '') ? 0 : $row->total_matured_amount }}</td>
                                                 <td>{{ ($row->total_unbilled_amount == '') ? 0 : $row->total_unbilled_amount }}</td> --}}
-                                                {{-- <td>{{ $row->paid == '' ? 0 : $row->paid }}</td> --}}
+                                                {{-- <td>{{ $row->due == '' ? 0 : $row->due }}</td> --}}
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -1215,7 +1210,7 @@
             $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
                 var amount = parseInt($('#amount').val().replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 10);
                 var operator = $('#condition').val() == '' ? '=' : $('#condition').val();
-                var due = parseFloat(data[20]) || 0; // use data for the age column
+                var due = parseFloat(data[18]) || 0; // use data for the age column
 
                 switch (operator) {
                     case '<':

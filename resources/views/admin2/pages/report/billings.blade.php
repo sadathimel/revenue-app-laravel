@@ -144,7 +144,7 @@
                                             </tr>
                                         @endforeach
                                     </tbody>
-                                    <tfoot>
+                                    {{-- <tfoot>
 
                                         <tr>
                                             <td>Client Name</td>
@@ -170,7 +170,7 @@
                                             <td>Unbill Amount = {{ $results->sum('total_unbilled_amount') }}</td>
                                             <td>Due = {{ $results->sum('due') }}</td>
                                         </tr>
-                                    </tfoot>
+                                    </tfoot> --}}
 
 
                                 </table>

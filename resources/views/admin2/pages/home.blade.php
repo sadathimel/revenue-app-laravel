@@ -57,7 +57,41 @@
                     <!-- ./col -->
 
                 </div>
-                <!-- /.row -->
+
+
+                <div class="card-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+
+                                <th>Year</th>
+
+                                <th>Total amount</th>
+
+                                <th>Total Received</th>
+
+                                <th>Due</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($cam1 as $row)
+                                {{-- {{ dd($row) }} --}}
+                                <tr>
+                                    <td> {{ $row->year }}</td>
+                                    <td> <b>৳</b> {{ number_format($row->total_amount) }}</td>
+                                    <td> <b>৳</b> {{ number_format($row->total_received_amount) }}</td>
+                                    <td> <b>৳</b> {{ number_format($row->total_due) }}</td>
+
+                                </tr>
+                            @endforeach
+                        </tbody>
+
+                    </table>
+                </div>
+
+
+
+
 
             </div><!-- /.container-fluid -->
         </section>

@@ -11,16 +11,11 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>Month wise Due Bill</h1>
+                <div class="row mb-2 text-center">
+                    <div class="col-sm-12">
+                        <h1>Month wise <span class="text-red text-bold"> Due</span> Bill</h1>
                     </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Reports</li>
-                        </ol>
-                    </div>
+
                 </div>
             </div><!-- /.container-fluid -->
         </section>
@@ -535,7 +530,7 @@
                         i++
                     } while (i == -1 && (this.selectAllOption.isDisabled() || this.selectAllOption
                             .isHidden()) || i >= 0 && i < this.options.length && (this.options[i]
-                        .isDisabled() || this
+                            .isDisabled() || this
                             .options[i].isHidden()));
                     this.itemFocus = i > this.options.length - 1 ? this.itemFocus : i
                 };
@@ -546,7 +541,7 @@
                         i--
                     } while (i == -1 && (this.selectAllOption.isDisabled() || this.selectAllOption
                             .isHidden()) || i >= 0 && (this.options[i].isDisabled() || this.options[i]
-                        .isHidden()) &&
+                            .isHidden()) &&
                         i > -2);
                     this.itemFocus = i
                 };
@@ -1211,7 +1206,7 @@
             $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
                 var amount = parseInt($('#amount').val().replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 10);
                 var operator = $('#condition').val() == '' ? '=' : $('#condition').val();
-                var due = parseFloat(data[20]) || 0; // use data for the age column
+                var due = parseFloat(data[14]) || 0; // use data for the age column
 
                 switch (operator) {
                     case '<':
