@@ -94,6 +94,19 @@
                 <li class="sidebar-item">
                     <a class='sidebar-link' href="#"><i class="bi bi-activity"></i> <span>User Activities</span></a>
                 </li>
+                <li class="sidebar-item">
+                    <a class='sidebar-link' href="#"><i class="bi bi-activity"></i> <span>LogOut
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+        
+                            <x-responsive-nav-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </x-responsive-nav-link>
+                        </form>
+                    </span></a>
+                </li>
 
             </ul>
         </div>
