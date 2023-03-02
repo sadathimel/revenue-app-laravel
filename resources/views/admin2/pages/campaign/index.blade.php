@@ -160,7 +160,6 @@
                                                     @php
                                                         $paymentType = strtoupper($campaign->payment_status);
                                                         
-                                                        // dd($campaign->due);
                                                         
                                                     @endphp
                                                     {{-- {{ var_dump((new DateTime($campaign->bill_submission_date))->diff(new DateTime('now'))->days) }} --}}

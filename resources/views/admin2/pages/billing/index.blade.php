@@ -39,8 +39,6 @@
                             <th>Period</th>
                             <th>Campaign</th>
                             <th>Description</th>
-{{--                            <th>Estimate No</th>--}}
-{{--                            <th>Bill No</th>--}}
                             <th>Payment status</th>
                             <th>Action</th>
                         </tr>
@@ -54,8 +52,6 @@
                                 <td>{{ date('F', mktime(0, 0, 0, $campaign->month, 10)) }}</td>
                                 <td>{{ substr($campaign->title,0, 20) }} ...</td>
                                 <td>{{ substr($campaign->description,0, 20) }} ...</td>
-{{--                                <td>{{ ($campaign->estimate_no == '') ? '-' : $campaign->estimate_no }}</td>--}}
-{{--                                <td>{{ ($campaign->bill_no == '') ? '-' : $campaign->bill_no }}</td>--}}
                                 <td>{{ $campaign->payment_status }}</td>
                                 <td>
                                     <div class="btn-group btn-group-inline">

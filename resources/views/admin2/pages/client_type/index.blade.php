@@ -37,7 +37,6 @@
                             <tr>
                                 <td>{{$client_type->id}}</td>
                                 <td>{{$client_type->title}}</td>
-{{--                                <td>{{$client_type->note}}</td>--}}
                                 <td>{{ substr($client_type->note,0, 50) }} ...</td>
                                 <td>
                                     <span class="badge bg-success">Active</span>
