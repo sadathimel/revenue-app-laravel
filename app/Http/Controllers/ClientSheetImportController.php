@@ -16,7 +16,6 @@ class ClientSheetImportController extends Controller
         //return 'ok';
         $client_types = ClientType::all();
         return view('admin2.pages.client.bulk-import', compact('client_types'));
-//        return view('pages.client.bulk-import', compact('client_types'));
     }
 
     /**

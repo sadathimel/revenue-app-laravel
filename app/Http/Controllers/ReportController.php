@@ -14,7 +14,6 @@ class ReportController extends Controller
         $title = $request->get('title');
         $campaigns = Campaign::all();
         $clients = Client::all();
-//        $years = ['2021', '2022', '2023'];
 
         $results = DB::table('clients')
             ->leftJoin('campaigns', 'clients.id', '=', 'campaigns.client_id')
